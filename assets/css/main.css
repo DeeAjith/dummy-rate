@@ -187,6 +187,15 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .rate-gain.__page-wrapper .__hero #q-cards .swiper {
+    width: 90vw;
+  }
+  .rate-gain.__page-wrapper .__hero #q-cards .swiper .__slideContent {
+    padding: 20px;
+  }
+}
+
 .rate-gain.__page-wrapper .__hero::before {
   content: '';
   position: absolute;
@@ -216,6 +225,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 768px) {
+  .rate-gain.__page-wrapper .__hero .row {
+    padding: 0;
+    gap: 50px;
+  }
 }
 
 .rate-gain.__page-wrapper .__hero .row .__content {

@@ -195,6 +195,17 @@ $grad1: linear-gradient(110deg, $primaryColor2 55%, $white 150%);
                 width: 100%;
             }
         }
+        #q-cards {
+            @media (max-width: 768px) {
+                .swiper {
+                    width: 90vw;
+
+                    .__slideContent {
+                        padding: 20px;
+                    }
+                }
+            }
+        }
 
         &::before {
             content: '';
@@ -221,6 +232,11 @@ $grad1: linear-gradient(110deg, $primaryColor2 55%, $white 150%);
         .row {
             padding-inline: 90px;
             align-items: center;
+
+            @media (max-width: 768px) {
+                padding: 0;
+                gap: 50px;
+            }
 
             .__content {
                 padding-right: 30%;
