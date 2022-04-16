@@ -10,6 +10,7 @@ $(".home-hero .__heroContent .__action").on("click", function () {
 // q-cards
 const swiper = new Swiper('.swiper', {
     speed: 600,
+    allowTouchMove: false,
     slideShadows: false,
     simulateTouch: false,
     navigation: {
@@ -25,3 +26,4 @@ const swiper = new Swiper('.swiper', {
         },
     },
 });
+$
