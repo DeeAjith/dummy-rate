@@ -63,7 +63,7 @@
 
 .rate-gain.__page-wrapper .__action::after {
   content: '';
-  background: url("assets/images/svg/icons/lineArrow.svg") center/contain no-repeat;
+  background: url("../../assets/images/svg/icons/lineArrow.svg") center/contain no-repeat;
   width: 15px;
   aspect-ratio: 1;
   display: block;
@@ -344,7 +344,7 @@
 .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions .range-wrap .range .ui-slider-handle:before, .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions .range-wrap .range .ui-slider-handle::after {
   content: '';
   display: block;
-  background: url("assets/images/svg/icons/chevron-left.svg") center/contain no-repeat;
+  background: url("../../assets/images/svg/icons/chevron-left.svg") center/contain no-repeat;
   width: 10px;
   height: 21px;
 }
