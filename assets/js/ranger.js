@@ -37,3 +37,15 @@ $(".__questions .q-3 .range-wrap .range").slider({
         return $(this).find(handleEl).html(ui.value);
     }
 });
+$(".__questions .q-9 .range-wrap .range").slider({
+    range: "min",
+    min: 00,
+    max: 10,
+    value: 4,
+    create: function () {
+        return $(this).find(handleEl).html($(this).slider("value"));
+    },
+    slide: function (e, ui) {
+        return $(this).find(handleEl).html(ui.value);
+    }
+});

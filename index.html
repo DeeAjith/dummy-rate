@@ -20,10 +20,10 @@
     </div>
     <div class="container __hero">
       <img class="svgBg" src="assets/images/svg/hero-background.svg">
-      <div class="row home-hero slides">
+      <div onsubmit="console.log('Hi);" class="row home-hero slides">
         <div class="col-sm-12 col-lg-6 __heroContent">
           <div class="__content">
-            <h1>Content AI’s Personalized Hotel Content Score Report.</h1>
+            <h1>Content AI's Personalized Hotel Content Score Report.</h1>
             <p>Based on your unique inputs, Content AI could help your team achieve the desired revenue results.</p>
             <a href="javascript:void(0)" class="__action">Customize This Report</a>
           </div>
@@ -33,8 +33,8 @@
           <img src="assets/images/svg/hero-illustration.svg" alt="RateGain Calculator">
         </div>
         <!-- slideItems -->
-        <div class="col-sm-12 col-lg-6 d-none" id="q-cards">
-          <div class="swiper __range-slider">
+        <form action="" method="post" class="col-sm-12 col-lg-6 d-none" id="q-cards">
+          <div class="swiper __rate-slider">
             <div class="swiper-wrapper">
               <!-- Slide 1-->
               <div class="swiper-slide">
@@ -67,7 +67,9 @@
                       </div>
                     </li>
                   </ol>
-                  <button class="__action">Generate My Report</button>
+                  <div class="__actions">
+                    <button class="__action">Generate Report</button>
+                  </div>
                 </div>
               </div>
               <!-- slide 2 -->
@@ -76,82 +78,206 @@
                   <h1><span>Questions:</span></h1>
                   <p><span>We need some details to generate a valid report</span></p>
                   <ol start="4" class="__questions radio-qs">
-                    <li class="q-1">
-                      <p>What is your team’s current content stack? (Select all that apply</p>
+                    <li class="q-4">
+                      <p>What is your team's current content stack? (Select all that apply</p>
                       <p><span>Content Management</span></p>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action" id="cm-sharedDrives">
-                        <label for="cm-sharedDrives">
+                        <label class="w-50" for="cm-sharedDrives">
                           <p>Shared Drives</p>
                         </label>
                         <input type="radio" name="cm-action" id="cm-xlSheets">
-                        <label for="cm-xlSheets">
+                        <label class="w-50" for="cm-xlSheets">
                           <p>Excel Sheets</p>
                         </label>
                         <input type="radio" name="cm-action" id="cm-gmail">
-                        <label for="cm-gmail">
+                        <label class="w-50" for="cm-gmail">
                           <p>Gmail</p>
                         </label>
                         <input type="radio" name="cm-action" id="cm-inhouseSolution">
-                        <label for="cm-inhouseSolution">
+                        <label class="w-50" for="cm-inhouseSolution">
                           <p>In-house custom solution</p>
                         </label>
                       </fieldset>
                       <p class="mt-4"><span>Content Optimization</span></p>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action2" id="cm-photoEditingtools">
-                        <label for="cm-photoEditingtools">
+                        <label class="w-50" for="cm-photoEditingtools">
                           <p>Photo Editing Tools</p>
                         </label>
                         <input type="radio" name="cm-action2" id="cm-imageFilters">
-                        <label for="cm-imageFilters">
+                        <label class="w-50" for="cm-imageFilters">
                           <p>Image filters</p>
                         </label>
                         <input type="radio" name="cm-action2" id="cm-seo">
-                        <label for="cm-seo">
+                        <label class="w-50" for="cm-seo">
                           <p>SEO</p>
                         </label>
                         <input type="radio" name="cm-action2" id="cm-inhouseSolution2">
-                        <label for="cm-inhouseSolution2">
+                        <label class="w-50" for="cm-inhouseSolution2">
                           <p>In-house custom solution</p>
                         </label>
                       </fieldset>
                       <p class="mt-4"><span>Content Distribution</span></p>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action3" id="cm-manual">
-                        <label for="cm-manual">
+                        <label class="w-50" for="cm-manual">
                           <p>Manual</p>
                         </label>
                         <input type="radio" name="cm-action3" id="cm-bulk">
-                        <label for="cm-bulk">
+                        <label class="w-50" for="cm-bulk">
                           <p>Bulk</p>
                         </label>
                         <input type="radio" name="cm-action3" id="cm-inhouseSolution3">
-                        <label for="cm-inhouseSolution3">
+                        <label class="w-50" for="cm-inhouseSolution3">
                           <p>In-house custom solution</p>
                         </label>
                       </fieldset>
                     </li>
+                    <li class="q-5">
+                      <p>How frequently do you update the descriptive content for your properties?</p>
+                      <fieldset class="radio-qset">
+                        <input type="radio" name="cm-action4" id="cm-atleastAmonth">
+                        <label class="w-100" for="cm-atleastAmonth">
+                          <p>At least once a month</p>
+                        </label>
+                        <input type="radio" name="cm-action4" id="cm-atleastAquater">
+                        <label class="w-100" for="cm-atleastAquater">
+                          <p>At least once a quarter</p>
+                        </label>
+                        <input type="radio" name="cm-action4" id="cm-annual">
+                        <label class="w-100" for="cm-annual">
+                          <p>Annually</p>
+                        </label>
+                        <input type="radio" name="cm-action4" id="cm-onlypropertystateChange">
+                        <label class="w-100" for="cm-onlypropertystateChange">
+                          <p>Only when property state changes</p>
+                        </label>
+                      </fieldset>
+                    </li>
+                    <li class="q-6">
+                      <p>How frequently do you update the images for your properties?</p>
+                      <fieldset class="radio-qset">
+                        <input type="radio" name="cm-action5" id="cm-atleast6months">
+                        <label class="w-100" for="cm-atleast6months">
+                          <p>At least once in 6 months</p>
+                        </label>
+                        <input type="radio" name="cm-action5" id="cm-atleastAyear">
+                        <label class="w-100" for="cm-atleastAyear">
+                          <p>At least once a year</p>
+                        </label>
+                        <input type="radio" name="cm-action5" id="cm-onlypropertystateChange">
+                        <label class="w-100" for="cm-onlypropertystateChange">
+                          <p>Only when property state changes</p>
+                        </label>
+                        <input type="radio" name="cm-action5" id="cm-annual">
+                        <label class="w-100" for="cm-annual">
+                          <p>Other:</p>
+                          <input class="ml-3 form-control w-50" type="text" name="other" id="cm-other">
+                        </label>
+                      </fieldset>
+                    </li>
+                    <li class="q-7">
+                      <p>What's your biggest pain point with respect to content across demand partners?</p>
+                      <fieldset class="radio-qset">
+                        <input type="radio" name="cm-action6" id="cm-resLimit">
+                        <label class="w-100" for="cm-resLimit">
+                          <p>Resource limitations</p>
+                        </label>
+                        <input type="radio" name="cm-action6" id="cm-trackPerf">
+                        <label class="w-100" for="cm-trackPerf">
+                          <p>Tracking content performance across demand partners</p>
+                        </label>
+                        <input type="radio" name="cm-action6" id="cm-autoMnD">
+                        <label class="w-100" for="cm-autoMnD">
+                          <p>Automated tools for management and distribution of content</p>
+                        </label>
+                        <input type="radio" name="cm-action6" id="cm-aota">
+                        <label class="w-100" for="cm-aota">
+                          <p>All of the above</p>
+                        </label>
+                      </fieldset>
+                    </li>
+                    <li class="q-8">
+                      <p>Do you track the content quality scores across demand partners?</p>
+                      <fieldset class="radio-qset">
+                        <input type="radio" name="cm-action7" id="cm-yes">
+                        <label class="w-25" for="cm-yes">
+                          <p>Yes</p>
+                        </label>
+                        <input type="radio" name="cm-action7" id="cm-no">
+                        <label class="w-25" for="cm-no">
+                          <p>No</p>
+                        </label>
+                      </fieldset>
+                    </li>
+                    <li class="q-9">
+                      <p>What would be your average content score across properties and demand partners (out of 10)?</p>
+                      <div class="range-wrap">
+                        <span>0</span>
+                        <div class="range"></div>
+                        <span>10</span>
+                      </div>
+                    </li>
                   </ol>
-                  <button class="__action">Generate My Report</button>
+                  <div class="__actions">
+                    <a href="javascript:void(0)" class="__previous">Back</a>
+                    <button class="__action">Generate Report</button>
+                  </div>
+                </div>
+              </div>
+              <!-- slide 3 -->
+              <div class="swiper-slide">
+                <div class="__slideContent">
+                  <fieldset class="detailsForm w-100">
+                    <div class="field">
+                      <input required id="fname" type="text" class="w-100 input-text form-input">
+                      <label for="fname">First Name</label>
+                    </div>
+                    <div class="field">
+                      <input required id="lname" type="text" class="w-100 input-text form-input">
+                      <label for="lname">Last Name</label>
+                    </div>
+                    <div class="field">
+                      <input required id="jobtitle" type="text" class="w-100 input-text form-input">
+                      <label for="jobtitle">Job Title</label>
+                    </div>
+                    <div class="field">
+                      <input required id="email" type="email" class="w-100 input-text form-input">
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="field">
+                      <input required id="hotel" type="text" class="w-100 input-text form-input">
+                      <label for="hotel">Hotel Name</label>
+                    </div>
+                    <div class="field">
+                      <input required id="howdy" type="text" class="w-100 input-text form-input">
+                      <label for="howdy">How did you hear about us?</label>
+                    </div>
+                  </fieldset>
+                  <div class="__actions">
+                    <a href="javascript:void(0)" class="__previous">Back</a>
+                    <button type="submit" class="__action __submit">Generate Report</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script type="text/javascript"
+    src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="assets/js/ranger.js"></script>
   <script src="assets/js/index.js"></script>
-
 </body>
 
 </html>
