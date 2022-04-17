@@ -1,10 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 * {
   font-family: "Inter", sans-serif;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+}
+
+.rateGaincalc .popover {
+  background-color: #000000;
+  max-width: 500px;
+}
+
+.rateGaincalc .popover .popover-body {
+  color: #FFFFFF;
+}
+
+.rateGaincalc .popover .popover-arrow::after {
+  border-left-color: #000000;
 }
 
 .rate-gain.__page-wrapper {
@@ -349,6 +358,12 @@
   position: relative;
   width: 100%;
   padding-right: 10px;
+}
+
+.rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions .__slideHead .popover-toggle {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions li:not(:first-child) {

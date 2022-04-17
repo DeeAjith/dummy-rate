@@ -8,10 +8,10 @@
   <title>Rate Gain | Calulator</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body oncontextmenu="return false">
+<body oncontextmenu="return false" class="rateGaincalc">
   <div class="rate-gain __page-wrapper container">
     <div class="__header container">
       <div class="__brand">
@@ -40,7 +40,9 @@
               <div class="swiper-slide">
                 <div class="__slideContent">
                   <h1><span>Questions:</span></h1>
-                  <p><span>We need some details to generate a valid report</span></p>
+                  <div class="__slideHead d-flex justify-content-between align-items-start">
+                    <p><span>We need some details to generate a valid report</span></p>
+                  </div>
                   <ol class="__questions">
                     <li class="q-1">
                       <p>How many properties does your chain have?</p>
@@ -79,7 +81,9 @@
                   <p><span>We need some details to generate a valid report</span></p>
                   <ol start="4" class="__questions radio-qs">
                     <li class="q-4">
-                      <p>What is your team's current content stack? (Select all that apply</p>
+                      <div class="__slideHead d-flex justify-content-between align-items-start">
+                        <p>What is your team's current content stack? (Select all that apply)</p>
+                      </div>
                       <p><span>Content Management</span></p>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action" id="cm-sharedDrives">
@@ -135,7 +139,14 @@
                       </fieldset>
                     </li>
                     <li class="q-5">
-                      <p>How frequently do you update the descriptive content for your properties?</p>
+                      <div class="__slideHead d-flex justify-content-between align-items-start">
+                        <p>How frequently do you update the descriptive content for your properties?</p>
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
+                          data-bs-trigger="hover" data-bs-placement="left"
+                          data-bs-content="Demand partners keep updating their list of amenities based on customer requirements. E.g. with the pandemic there has been a new focus on health and safety requirements.">
+                          <img src="assets/images/svg/icons/info-icon.svg"></span>
+                      </div>
+
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action4" id="cm-atleastAmonth">
                         <label class="w-100" for="cm-atleastAmonth">
@@ -156,7 +167,13 @@
                       </fieldset>
                     </li>
                     <li class="q-6">
-                      <p>How frequently do you update the images for your properties?</p>
+                      <div class="__slideHead d-flex justify-content-between align-items-start">
+                        <p>How frequently do you update the images for your properties?</p>
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
+                          data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Expedia research shows that hotel listings with
+                          high-quality photos have a 63% higher click-through rate than those without.">
+                          <img src="assets/images/svg/icons/info-icon.svg"></span>
+                      </div>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action5" id="cm-atleast6months">
                         <label class="w-100" for="cm-atleast6months">
@@ -178,7 +195,10 @@
                       </fieldset>
                     </li>
                     <li class="q-7">
-                      <p>What's your biggest pain point with respect to content across demand partners?</p>
+                      <div class="__slideHead d-flex justify-content-between align-items-start">
+                        <p>What's your biggest pain point with respect to content across demand partners?</p>
+                      </div>
+
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action6" id="cm-resLimit">
                         <label class="w-100" for="cm-resLimit">
@@ -199,7 +219,13 @@
                       </fieldset>
                     </li>
                     <li class="q-8">
-                      <p>Do you track the content quality scores across demand partners?</p>
+                      <div class="__slideHead d-flex justify-content-between align-items-start">
+                        <p>Do you track the content quality scores across demand partners?</p>
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
+                          data-bs-trigger="hover" data-bs-placement="left"
+                          data-bs-content="Your content score decides where you show up on the user search results for the demand partner">
+                          <img src="assets/images/svg/icons/info-icon.svg"></span>
+                      </div>
                       <fieldset class="radio-qset">
                         <input type="radio" name="cm-action7" id="cm-yes">
                         <label class="w-25" for="cm-yes">
@@ -269,8 +295,7 @@
   </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type="text/javascript"

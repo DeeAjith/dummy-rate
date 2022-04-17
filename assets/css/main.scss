@@ -13,11 +13,27 @@ $darkgrey1: #3F3D56;
 $darkgrey2: #2F2E41;
 $grad1: linear-gradient(110deg, $primaryColor2 55%, $white 150%);
 
+// popover vars
+$popover-bg: $black;
+// popover vars
+
 * {
     font-family: "Inter", sans-serif;
-    user-select: none;
+    // user-select: none;
 }
 
+.rateGaincalc .popover {
+    background-color: $black;
+    max-width: 500px;
+
+    .popover-body {
+        color: $white;
+    }
+
+    .popover-arrow::after {
+        border-left-color: $black;
+    }
+}
 
 .rate-gain.__page-wrapper {
     display: block;
@@ -341,6 +357,12 @@ $grad1: linear-gradient(110deg, $primaryColor2 55%, $white 150%);
                         position: relative;
                         width: 100%;
                         padding-right: 10px;
+
+                        .__slideHead {
+                            .popover-toggle {
+                                height: max-content;
+                            }   
+                        }
 
                         li {
                             &:not(:first-child) {
