@@ -259,6 +259,14 @@ $popover-bg: $black;
         }
     }
 
+    .col-1336-5 {
+        width: 40% !important;
+    }
+
+    .col-1336-7 {
+        width: 60% !important;
+    }
+
     .__header {
         .__brand {}
     }
@@ -312,6 +320,10 @@ $popover-bg: $black;
             padding-inline: 90px;
             align-items: center;
 
+            @media (max-width: 1367px) {
+                padding: 0;
+            }
+
             @media (max-width: 768px) {
                 padding: 0;
                 gap: 50px;
@@ -319,6 +331,10 @@ $popover-bg: $black;
 
             .__content {
                 padding-right: 30%;
+
+                @media (max-width: 1367px) {
+                    padding: 0;
+                }
             }
 
             &.slides {
@@ -326,6 +342,10 @@ $popover-bg: $black;
                     &.__rate-slider {
                         width: 650px;
                         height: 560px;
+
+                        @media (max-width: 1367px) {
+                            width: 650px;
+                        }
                     }
                 }
 
@@ -339,6 +359,10 @@ $popover-bg: $black;
                     background: #FFFFFF;
                     box-shadow: 0px 4px 70px transparentize($black, .75);
                     position: relative;
+
+                    @media (max-width: 1367px) {
+                        padding: 20px 15px 20px 20px;
+                    }
 
                     >h1,
                     >p {
@@ -361,7 +385,7 @@ $popover-bg: $black;
                         .__slideHead {
                             .popover-toggle {
                                 height: max-content;
-                            }   
+                            }
                         }
 
                         li {
@@ -491,6 +515,10 @@ $popover-bg: $black;
                                         font-size: 16px;
                                         margin: 0;
                                         line-height: 30px;
+                                    }
+
+                                    [type="text"] {
+                                        margin-left: 15px;
                                     }
                                 }
                             }
