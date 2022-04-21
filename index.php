@@ -1,5 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+if (isset($_POST['submit'])) {
+  /*
+  F4 = $churn;
+  E4 = $_POST['properties'];
+  E5 = $_POST['team'];
+  E6 = $_POST['ota'];
+  */
+  // print_r(json_encode($_POST));
+  $propertyCreation = [];
+  $propertyUpdate = [];
+  $efficiencyScalability = [];
+  $churn = round($_POST['properties'] * 0.06);
+  $propertyCreation['manual_effort']['single'] = (($churn + $_POST['properties']) * 2.5 * $_POST['ota']);
+  $propertyCreation['manual_effort']['multiple'] = $propertyCreation['manual_effort']['single'] * 60;
+
+  $propertyCreation['content_ai']['single'] = ((($churn + $_POST['properties']) * 2.5 * $_POST['ota']) / (0.05 * $_POST['ota'] + $_POST['ota']));
+  $propertyCreation['content_ai']['multiple'] = $propertyCreation['content_ai']['single'] * 60;
+
+  $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
+  $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
+
+  // print_r(json_encode($propertyCreation));
+
+
+  $propertyUpdate['manual_effort']['single'] = (($churn + $_POST['properties']) * 0.75 * $_POST['ota'] * 4);
+  $propertyUpdate['manual_effort']['multiple'] = $propertyUpdate['manual_effort']['single'] * 60;
+
+  $propertyUpdate['content_ai']['single'] = (($churn + $_POST['properties']) * 0.75 * $_POST['ota'] * 4) / (0.05 * $_POST['ota'] + $_POST['ota']);
+  $propertyUpdate['content_ai']['multiple'] = $propertyUpdate['content_ai']['single'] * 60;
+
+  $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
+  $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
+
+  // print_r(json_encode($propertyUpdate));
+
+
+}
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -48,7 +87,9 @@
                       <p>How many properties does your chain have?</p>
                       <div class="range-wrap">
                         <span>0</span>
-                        <div class="range"></div>
+                        <div class="range properties">
+                          <input type="hidden" name="properties" class="calculation">
+                        </div>
                         <span>150</span>
                       </div>
                     </li>
@@ -56,7 +97,9 @@
                       <p>What is the size of your team that manages the content?</p>
                       <div class="range-wrap">
                         <span>0</span>
-                        <div class="range"></div>
+                        <div class="range team">
+                          <input type="hidden" name="team" class="calculation">
+                        </div>
                         <span>10</span>
                       </div>
                     </li>
@@ -64,7 +107,9 @@
                       <p>How many unique demand partners is your property connected to?</p>
                       <div class="range-wrap">
                         <span>0</span>
-                        <div class="range"></div>
+                        <div class="range partners">
+                          <input type="hidden" name="ota" class="calculation">
+                        </div>
                         <span>15</span>
                       </div>
                     </li>
@@ -141,9 +186,7 @@
                     <li class="q-5">
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>How frequently do you update the descriptive content for your properties?</p>
-                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
-                          data-bs-trigger="hover" data-bs-placement="left"
-                          data-bs-content="Demand partners keep updating their list of amenities based on customer requirements. E.g. with the pandemic there has been a new focus on health and safety requirements.">
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Demand partners keep updating their list of amenities based on customer requirements. E.g. with the pandemic there has been a new focus on health and safety requirements.">
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
 
@@ -169,8 +212,7 @@
                     <li class="q-6">
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>How frequently do you update the images for your properties?</p>
-                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
-                          data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Expedia research shows that hotel listings with
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Expedia research shows that hotel listings with
                           high-quality photos have a 63% higher click-through rate than those without.">
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
@@ -190,7 +232,7 @@
                         <input type="radio" name="cm-action5" id="cm-other">
                         <label class="w-100" for="cm-other">
                           <p>Other:</p>
-                          <input class="form-control w-50" placeholder="Please type here..." required type="text" name="other" id="cm-other">
+                          <input class="form-control w-50" placeholder="Please type here..." type="text" name="other" id="cm-other">
                         </label>
                       </fieldset>
                     </li>
@@ -221,9 +263,7 @@
                     <li class="q-8">
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>Do you track the content quality scores across demand partners?</p>
-                        <span class="popover-toggle" type="button" data-bs-toggle="popover"
-                          data-bs-trigger="hover" data-bs-placement="left"
-                          data-bs-content="Your content score decides where you show up on the user search results for the demand partner">
+                        <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Your content score decides where you show up on the user search results for the demand partner">
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
                       <fieldset class="radio-qset">
@@ -283,7 +323,7 @@
                   </fieldset>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button type="submit" class="__action __submit">Generate Report</button>
+                    <button type="submit" name="submit" class="__action __submit">Generate Report</button>
                   </div>
                 </div>
               </div>
@@ -298,12 +338,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script type="text/javascript"
-    src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script src="assets/js/ranger.js"></script>
   <script src="assets/js/index.js"></script>
-  
+
+  <script>
+    $(document).ready(function() {
+      $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());
+      $('.range.team .calculation').val($('.range.team .ui-state-default').html());
+      $('.range.partners .calculation').val($('.range.partners .ui-state-default').html());
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          var attributeValue = $(mutation.target).html();
+          $(mutation.target).siblings('.calculation').val(attributeValue);
+        });
+      });
+      observer.observe($('.range.properties .ui-state-default')[0], {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      observer.observe($('.range.team .ui-state-default')[0], {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      observer.observe($('.range.partners .ui-state-default')[0], {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+
+    });
+  </script>
 </body>
 
 </html>
