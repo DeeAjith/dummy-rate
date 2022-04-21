@@ -1,11 +1,11 @@
 // hero-switch
-$(".home-hero .__heroContent .__action").on("click", function () {
-    $('#q-cards,#q-hero').fadeIn(1000, function () {
-        // run extra code here
-        $("#q-cards").switchClass("d-none", "d-block");
-        $("#q-hero").switchClass("d-block", "d-none");
-    });
-});
+// $(".home-hero .__heroContent .__action").on("click", function () {
+//     $('#q-cards,#q-hero').fadeIn(0, function () {
+//         // run extra code here
+//         $("#q-cards").switchClass("d-none", "d-block");
+//         $("#q-hero").switchClass("d-block", "d-none");
+//     });
+// });
 
 // q-cards
 const swiper = new Swiper('.swiper', {

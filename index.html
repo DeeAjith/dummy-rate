@@ -25,15 +25,15 @@
           <div class="__content">
             <h1>Content AI's Personalized Hotel Content Score Report.</h1>
             <p>Based on your unique inputs, Content AI could help your team achieve the desired revenue results.</p>
-            <a href="javascript:void(0)" class="__action">Customize This Report</a>
+            <span class="__action">Take This Assignment</a>
           </div>
         </div>
         <!-- hero-image -->
-        <div class="col-sm-12 col-1336-7 col-lg-6 d-block" id="q-hero">
+        <!-- <div class="col-sm-12 col-1336-7 col-lg-6 d-block" id="q-hero">
           <img src="assets/images/svg/hero-illustration.svg" alt="RateGain Calculator">
-        </div>
+        </div> -->
         <!-- slideItems -->
-        <form action="" method="post" class="col-sm-12 col-1336-7 col-lg-6 d-none" id="q-cards">
+        <form action="" method="post" class="col-sm-12 col-1336-7 col-lg-6" id="q-cards">
           <div class="swiper __rate-slider">
             <div class="swiper-wrapper">
               <!-- Slide 1-->
@@ -53,7 +53,7 @@
                       </div>
                     </li>
                     <li class="q-2">
-                      <p>How many properties does your chain have?</p>
+                      <p>What is the size of your team that manages the content?</p>
                       <div class="range-wrap">
                         <span>0</span>
                         <div class="range"></div>
@@ -61,7 +61,7 @@
                       </div>
                     </li>
                     <li class="q-3">
-                      <p>How many properties does your chain have?</p>
+                      <p>How many unique demand partners is your property connected to?</p>
                       <div class="range-wrap">
                         <span>0</span>
                         <div class="range"></div>
@@ -70,7 +70,7 @@
                     </li>
                   </ol>
                   <div class="__actions">
-                    <button class="__action">Generate Report</button>
+                    <button class="__action">Next</button>
                   </div>
                 </div>
               </div>
@@ -248,7 +248,7 @@
                   </ol>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Generate Report</button>
+                    <button class="__action">Next</button>
                   </div>
                 </div>
               </div>
