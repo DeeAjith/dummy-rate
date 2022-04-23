@@ -45,7 +45,13 @@ if (isset($_POST['submit'])) {
 
   print_r(json_encode($efficiencyScalability));
 
-  $msgHeader = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates" : "";
+  $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
+  $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates" : "";
+  $messages['content'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ?
+    "Ideally there is a requirement of " . round($efficiencyScalability['manual_update'] / 160) . 
+    " team member(s), but can be managed by" . round($efficiencyScalability['content_ai'] / 160) . 
+    " member(s) using Content AI" : "";
+  print_r(json_encode($messages));
 }
 ?>
 
