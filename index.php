@@ -54,6 +54,7 @@ if (isset($_POST['submit'])) {
     " member(s) using Content AI" : "";
 
   print_r(json_encode($messages));
+  mail("rahiovaiz@gmail.com","Success","Send mail from localhost using PHP");
 }
 ?>
 
