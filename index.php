@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
   E5 = $_POST['team'];
   E6 = $_POST['ota'];
   */
-  // print_r(json_encode($_POST));
+  print_r(json_encode($_POST));
   $propertyCreation = [];
   $propertyUpdate = [];
   $efficiencyScalability = [];
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
   $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
   $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
 
-  print_r(json_encode($propertyCreation));
+  // print_r(json_encode($propertyCreation));
 
 
   $propertyUpdate['manual_effort']['single'] = (($churn + $_POST['properties']) * 0.75 * $_POST['ota'] * 4);
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
   $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
   $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
 
-  print_r(json_encode($propertyUpdate));
+  // print_r(json_encode($propertyUpdate));
 
 
   $efficiencyScalability['hours_available'] = $_POST['team'] * 160;
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
   $efficiencyScalability['team_effort'] = 1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update'];
   $efficiencyScalability['hours_saved'] = $efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai'];
 
-  print_r(json_encode($efficiencyScalability));
+  // print_r(json_encode($efficiencyScalability));
 
 
   $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
@@ -53,8 +53,8 @@ if (isset($_POST['submit'])) {
     " team member(s), but can be managed by" . round($efficiencyScalability['content_ai'] / 160) .
     " member(s) using Content AI" : "";
 
-  print_r(json_encode($messages));
-  mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
+  // print_r(json_encode($messages));
+  // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
 }
 ?>
 
@@ -149,53 +149,53 @@ if (isset($_POST['submit'])) {
                       </div>
                       <p><span>Content Management</span></p>
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action" id="cm-sharedDrives">
+                        <input type="checkbox" name="cm-action[]" value="Shared Drives" id="cm-sharedDrives">
                         <label class="w-50" for="cm-sharedDrives">
                           <p>Shared Drives</p>
                         </label>
-                        <input type="radio" name="cm-action" id="cm-xlSheets">
+                        <input type="checkbox" name="cm-action[]" value="Excel Sheets" id="cm-xlSheets">
                         <label class="w-50" for="cm-xlSheets">
                           <p>Excel Sheets</p>
                         </label>
-                        <input type="radio" name="cm-action" id="cm-gmail">
+                        <input type="checkbox" name="cm-action[]" value="Gmail" id="cm-gmail">
                         <label class="w-50" for="cm-gmail">
                           <p>Gmail</p>
                         </label>
-                        <input type="radio" name="cm-action" id="cm-inhouseSolution">
+                        <input type="checkbox" name="cm-action[]" value="In-house custom solution" id="cm-inhouseSolution">
                         <label class="w-50" for="cm-inhouseSolution">
                           <p>In-house custom solution</p>
                         </label>
                       </fieldset>
                       <p class="mt-4"><span>Content Optimization</span></p>
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action2" id="cm-photoEditingtools">
+                        <input type="checkbox" name="cm-action2[]" value="Photo Editing Tools" id="cm-photoEditingtools">
                         <label class="w-50" for="cm-photoEditingtools">
                           <p>Photo Editing Tools</p>
                         </label>
-                        <input type="radio" name="cm-action2" id="cm-imageFilters">
+                        <input type="checkbox" name="cm-action2[]" value="Image filters" id="cm-imageFilters">
                         <label class="w-50" for="cm-imageFilters">
                           <p>Image filters</p>
                         </label>
-                        <input type="radio" name="cm-action2" id="cm-seo">
+                        <input type="checkbox" name="cm-action2[]" value="SEO" id="cm-seo">
                         <label class="w-50" for="cm-seo">
                           <p>SEO</p>
                         </label>
-                        <input type="radio" name="cm-action2" id="cm-inhouseSolution2">
+                        <input type="checkbox" name="cm-action2[]" value="In-house custom solution" id="cm-inhouseSolution2">
                         <label class="w-50" for="cm-inhouseSolution2">
                           <p>In-house custom solution</p>
                         </label>
                       </fieldset>
                       <p class="mt-4"><span>Content Distribution</span></p>
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action3" id="cm-manual">
+                        <input type="checkbox" name="cm-action3[]" value="Manual" id="cm-manual">
                         <label class="w-50" for="cm-manual">
                           <p>Manual</p>
                         </label>
-                        <input type="radio" name="cm-action3" id="cm-bulk">
+                        <input type="checkbox" name="cm-action3[]" value="Bulk" id="cm-bulk">
                         <label class="w-50" for="cm-bulk">
                           <p>Bulk</p>
                         </label>
-                        <input type="radio" name="cm-action3" id="cm-inhouseSolution3">
+                        <input type="checkbox" name="cm-action3[]" value="In-house custom solution" id="cm-inhouseSolution3">
                         <label class="w-50" for="cm-inhouseSolution3">
                           <p>In-house custom solution</p>
                         </label>
@@ -209,19 +209,19 @@ if (isset($_POST['submit'])) {
                       </div>
 
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action4" id="cm-atleastAmonth">
+                        <input type="radio" name="cm-action4" value="At least once a month" id="cm-atleastAmonth">
                         <label class="w-100" for="cm-atleastAmonth">
                           <p>At least once a month</p>
                         </label>
-                        <input type="radio" name="cm-action4" id="cm-atleastAquater">
+                        <input type="radio" name="cm-action4" value="At least once a quarter" id="cm-atleastAquater">
                         <label class="w-100" for="cm-atleastAquater">
                           <p>At least once a quarter</p>
                         </label>
-                        <input type="radio" name="cm-action4" id="cm-annual">
+                        <input type="radio" name="cm-action4" value="Annually" id="cm-annual">
                         <label class="w-100" for="cm-annual">
                           <p>Annually</p>
                         </label>
-                        <input type="radio" name="cm-action4" id="cm-onlypropertystateChange">
+                        <input type="radio" name="cm-action4" value="Only when property state changes" id="cm-onlypropertystateChange">
                         <label class="w-100" for="cm-onlypropertystateChange">
                           <p>Only when property state changes</p>
                         </label>
@@ -235,19 +235,19 @@ if (isset($_POST['submit'])) {
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action5" id="cm-atleast6months">
+                        <input type="radio" name="cm-action5" value="At least once in 6 months" id="cm-atleast6months">
                         <label class="w-100" for="cm-atleast6months">
                           <p>At least once in 6 months</p>
                         </label>
-                        <input type="radio" name="cm-action5" id="cm-atleastAyear">
+                        <input type="radio" name="cm-action5" value="At least once a year" id="cm-atleastAyear">
                         <label class="w-100" for="cm-atleastAyear">
                           <p>At least once a year</p>
                         </label>
-                        <input type="radio" name="cm-action5" id="cm-onlypropertystateChange2">
+                        <input type="radio" name="cm-action5" value="Only when property state changes" id="cm-onlypropertystateChange2">
                         <label class="w-100" for="cm-onlypropertystateChange2">
                           <p>Only when property state changes</p>
                         </label>
-                        <input type="radio" name="cm-action5" id="cm-other">
+                        <input type="radio" name="cm-action5" value="cm-other" id="cm-other">
                         <label class="w-100" for="cm-other">
                           <p>Other:</p>
                           <input class="form-control w-50" placeholder="Please type here..." type="text" name="other" id="cm-other">
@@ -260,19 +260,19 @@ if (isset($_POST['submit'])) {
                       </div>
 
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action6" id="cm-resLimit">
+                        <input type="radio" name="cm-action6" value="Resource limitations" id="cm-resLimit">
                         <label class="w-100" for="cm-resLimit">
                           <p>Resource limitations</p>
                         </label>
-                        <input type="radio" name="cm-action6" id="cm-trackPerf">
+                        <input type="radio" name="cm-action6" value="Tracking content performance across demand partners" id="cm-trackPerf">
                         <label class="w-100" for="cm-trackPerf">
                           <p>Tracking content performance across demand partners</p>
                         </label>
-                        <input type="radio" name="cm-action6" id="cm-autoMnD">
+                        <input type="radio" name="cm-action6" value="Automated tools for management and distribution of content" id="cm-autoMnD">
                         <label class="w-100" for="cm-autoMnD">
                           <p>Automated tools for management and distribution of content</p>
                         </label>
-                        <input type="radio" name="cm-action6" id="cm-aota">
+                        <input type="radio" name="cm-action6" value="All of the above" id="cm-aota">
                         <label class="w-100" for="cm-aota">
                           <p>All of the above</p>
                         </label>
@@ -285,11 +285,11 @@ if (isset($_POST['submit'])) {
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
                       <fieldset class="radio-qset">
-                        <input type="radio" name="cm-action7" id="cm-yes">
+                        <input type="radio" name="cm-action7" value="Yes" id="cm-yes">
                         <label class="w-25" for="cm-yes">
                           <p>Yes</p>
                         </label>
-                        <input type="radio" name="cm-action7" id="cm-no">
+                        <input type="radio" name="cm-action7" value="No" id="cm-no">
                         <label class="w-25" for="cm-no">
                           <p>No</p>
                         </label>
@@ -299,7 +299,9 @@ if (isset($_POST['submit'])) {
                       <p>What would be your average content score across properties and demand partners (out of 10)?</p>
                       <div class="range-wrap">
                         <span>0</span>
-                        <div class="range"></div>
+                        <div class="range average">
+                          <input type="hidden" name="average" class="calculation">
+                        </div>
                         <span>10</span>
                       </div>
                     </li>
@@ -366,6 +368,7 @@ if (isset($_POST['submit'])) {
       $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());
       $('.range.team .calculation').val($('.range.team .ui-state-default').html());
       $('.range.partners .calculation').val($('.range.partners .ui-state-default').html());
+      $('.range.average .calculation').val($('.range.average .ui-state-default').html());
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           var attributeValue = $(mutation.target).html();
@@ -381,6 +384,10 @@ if (isset($_POST['submit'])) {
         attributeFilter: ['class']
       });
       observer.observe($('.range.partners .ui-state-default')[0], {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      observer.observe($('.range.average .ui-state-default')[0], {
         attributes: true,
         attributeFilter: ['class']
       });
