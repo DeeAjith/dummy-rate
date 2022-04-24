@@ -47,13 +47,13 @@ if (isset($_POST['submit'])) {
 
 
   $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
-  $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates" : "";
+  $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates." : "";
   $messages['content'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ?
     "Ideally there is a requirement of " . round($efficiencyScalability['manual_update'] / 160) .
-    " team member(s), but can be managed by" . round($efficiencyScalability['content_ai'] / 160) .
-    " member(s) using Content AI" : "";
+    " team member(s), but can be managed by " . round($efficiencyScalability['content_ai'] / 160) .
+    " member(s) using Content AI." : "";
 
-  print_r(json_encode($messages));
+  // print_r(json_encode($messages));
   // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
 }
 ?>
@@ -108,6 +108,16 @@ if (isset($_POST['submit'])) {
               <!-- Slide 1-->
               <div class="swiper-slide">
                 <div class="__slideContent">
+                  <?php if (isset($messages['active']) && $messages['active']) : ?>
+                    <div class="alert alert-info">
+                      <div class="heading">
+                        <span><?= $messages['heading'] ?></span>
+                      </div>
+                      <div class="content">
+                        <span><?= $messages['content'] ?></span>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                   <h1><span>Questions:</span></h1>
                   <div class="__slideHead d-flex justify-content-between align-items-start">
                     <p><span>We need some details to generate a valid report</span></p>
