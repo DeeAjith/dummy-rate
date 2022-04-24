@@ -69,6 +69,18 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body oncontextmenu="return false" class="rateGaincalc">
+  <style type="text/css">
+    input[type=checkbox] {
+      transform: scale(1.5);
+    }
+
+    .w-50 {
+      width: 47% !important;
+      position: relative;
+      left: 11px;
+      bottom: 9px;
+    }
+  </style>
   <div class="rate-gain __page-wrapper container-md">
     <div class="__header container">
       <div class="__brand">
