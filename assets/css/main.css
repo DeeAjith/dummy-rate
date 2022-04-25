@@ -142,12 +142,20 @@
           transform: translateX(-5px) scale(-1);
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:checked {
+.rate-gain.__page-wrapper input[type="checkbox"]:checked + label:after, .rate-gain.__page-wrapper input[type="checkbox"]:checked + label:before {
+  border-radius: 4px !important;
+}
+
+.rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) + label:after, .rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) + label:before {
+  border-radius: 4px !important;
+}
+
+.rate-gain.__page-wrapper input[type="radio"]:checked, .rate-gain.__page-wrapper input[type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:checked + label {
+.rate-gain.__page-wrapper input[type="radio"]:checked + label, .rate-gain.__page-wrapper input[type="checkbox"]:checked + label {
   position: relative;
   cursor: pointer;
   line-height: 28px;
@@ -158,7 +166,7 @@
   color: #666;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:checked + label:before {
+.rate-gain.__page-wrapper input[type="radio"]:checked + label:before, .rate-gain.__page-wrapper input[type="checkbox"]:checked + label:before {
   content: '';
   position: absolute;
   left: 0;
@@ -170,7 +178,7 @@
   background: #FFFFFF;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:checked + label:after {
+.rate-gain.__page-wrapper input[type="radio"]:checked + label:after, .rate-gain.__page-wrapper input[type="checkbox"]:checked + label:after {
   content: '';
   width: 30px;
   height: 30px;
@@ -186,12 +194,12 @@
   transform: scale(1);
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:not(:checked) {
+.rate-gain.__page-wrapper input[type="radio"]:not(:checked), .rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) {
   position: absolute;
   left: -9999px;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label {
+.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label, .rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) + label {
   position: relative;
   padding-left: 40px;
   cursor: pointer;
@@ -202,7 +210,7 @@
   color: #666;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label:before {
+.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label:before, .rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) + label:before {
   content: '';
   position: absolute;
   left: 0;
@@ -214,7 +222,7 @@
   background: #FFFFFF;
 }
 
-.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label:after {
+.rate-gain.__page-wrapper input[type="radio"]:not(:checked) + label:after, .rate-gain.__page-wrapper input[type="checkbox"]:not(:checked) + label:after {
   content: '';
   width: 30px;
   height: 30px;
@@ -371,6 +379,7 @@
 @media (max-width: 1367px) {
   .rate-gain.__page-wrapper .__hero .row.slides .swiper.__rate-slider {
     width: 650px;
+    height: 600px;
   }
 }
 

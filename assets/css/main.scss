@@ -142,7 +142,31 @@ $popover-bg: $black;
     }
 
     input {
-        &[type="radio"] {
+        &[type="checkbox"] {
+            &:checked {
+                + {
+                    label {
+                        &:after,
+                        &:before {
+                            border-radius: 4px !important;
+                        }
+                    }
+                }
+            }
+            &:not(:checked) {
+                + {
+                    label {
+                        &:after,
+                        &:before {
+                            border-radius: 4px !important;
+                        }
+                    }
+                }
+
+            }
+        }
+        &[type="radio"],
+        &[type="checkbox"] {
             $radioSize: 30px;
 
             &:checked {
@@ -371,6 +395,7 @@ $popover-bg: $black;
 
                         @media (max-width: 1367px) {
                             width: 650px;
+                            height: 600px;
                         }
                     }
                 }
