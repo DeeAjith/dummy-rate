@@ -546,6 +546,7 @@ $popover-bg: $black;
                         }
 
                         &.radio-qs {
+                            min-height: 220px;
                             max-height: 90%;
                             margin-top: 30px;
                             margin-bottom: 30px;
