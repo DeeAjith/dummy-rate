@@ -9,7 +9,7 @@ $grey1: #dddddd;
 $grey2: #a6a6a6;
 $grey3: #CCCCCC;
 $grey4: #7C7C7C;
-$darkgrey1: #3F3D56;
+$darkgrey1: #474747;
 $darkgrey2: #2F2E41;
 $grad1: linear-gradient(110deg, $primaryColor2 55%, $white 150%);
 
@@ -146,6 +146,7 @@ $popover-bg: $black;
             &:checked {
                 + {
                     label {
+
                         &:after,
                         &:before {
                             border-radius: 4px !important;
@@ -153,9 +154,11 @@ $popover-bg: $black;
                     }
                 }
             }
+
             &:not(:checked) {
                 + {
                     label {
+
                         &:after,
                         &:before {
                             border-radius: 4px !important;
@@ -165,13 +168,14 @@ $popover-bg: $black;
 
             }
         }
+
         &[type="radio"],
         &[type="checkbox"] {
             $radioSize: 30px;
 
             &:checked {
                 position: absolute;
-                left: -9999px;
+                visibility: hidden;
 
                 + {
                     label {
@@ -215,7 +219,7 @@ $popover-bg: $black;
 
             &:not(:checked) {
                 position: absolute;
-                left: -9999px;
+                visibility: hidden;
 
                 + {
                     label {
@@ -423,7 +427,7 @@ $popover-bg: $black;
                     p {
                         span {
                             font-size: 16px;
-                            color: $grey1;
+                            color: $darkgrey1;
                         }
                     }
 
@@ -440,12 +444,15 @@ $popover-bg: $black;
                         }
 
                         li {
+                            font-weight: bold;
+
                             &:not(:first-child) {
                                 margin-top: 50px;
                             }
 
                             p {
                                 font-size: 16px;
+                                font-weight: inherit;
                                 color: $black;
                                 line-height: normal;
                                 margin-bottom: 24px;
@@ -459,7 +466,7 @@ $popover-bg: $black;
                             align-items: center;
                             font-weight: 400;
                             font-size: 14px;
-                            color: $grey1;
+                            color: $grey2;
 
                             .range {
                                 display: inline-flex;
@@ -469,7 +476,7 @@ $popover-bg: $black;
                                 height: 4px;
                                 border: 0;
                                 border-radius: 100px;
-                                background: $black;
+                                background: $grey3;
                                 outline: none;
 
                                 &::before,
@@ -478,7 +485,7 @@ $popover-bg: $black;
                                     content: '';
                                     width: 4px;
                                     height: 10px;
-                                    background-color: $black;
+                                    background-color: $grey3;
                                     border-radius: 10px;
                                 }
 
@@ -567,6 +574,7 @@ $popover-bg: $black;
                                         font-size: 16px;
                                         margin: 0;
                                         line-height: 30px;
+                                        font-weight: 400;
                                     }
 
                                     [type="text"] {

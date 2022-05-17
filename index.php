@@ -262,19 +262,6 @@ if (isset($_POST['submit'])) {
                         </label>
                       </fieldset>
                     </li>
-                  </ol>
-                  <div class="__actions">
-                    <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Next</button>
-                  </div>
-                </div>
-              </div>
-              <!-- slide 4 -->
-              <div class="swiper-slide">
-                <div class="__slideContent">
-                  <h1><span>Questions:</span></h1>
-                  <p><span>We need some details to generate a valid report</span></p>
-                  <ol start="6" class="__questions radio-qs">
                     <li class="q-6">
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>How frequently do you update the images for your properties?</p>
@@ -309,7 +296,7 @@ if (isset($_POST['submit'])) {
                   </div>
                 </div>
               </div>
-              <!-- slide 5 -->
+              <!-- slide 4 -->
               <div class="swiper-slide">
                 <div class="__slideContent">
                   <h1><span>Questions:</span></h1>
@@ -339,19 +326,6 @@ if (isset($_POST['submit'])) {
                         </label>
                       </fieldset>
                     </li>
-                  </ol>
-                  <div class="__actions">
-                    <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Next</button>
-                  </div>
-                </div>
-              </div>
-              <!-- slide 5 -->
-              <div class="swiper-slide">
-                <div class="__slideContent">
-                  <h1><span>Questions:</span></h1>
-                  <p><span>We need some details to generate a valid report</span></p>
-                  <ol start="8" class="__questions radio-qs">
                     <li class="q-8">
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>Do you track the content quality scores across demand partners?</p>
@@ -386,7 +360,7 @@ if (isset($_POST['submit'])) {
                   </div>
                 </div>
               </div>
-              <!-- slide  -->
+              <!-- slide 5 -->
               <div class="swiper-slide">
                 <div class="__slideContent">
                   <fieldset class="detailsForm w-100">
