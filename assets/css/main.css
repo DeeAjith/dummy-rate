@@ -67,6 +67,32 @@
   margin-top: auto;
 }
 
+.rate-gain.__page-wrapper .__take {
+  font-size: 25px;
+  color: #ffffff;
+  font-weight: bold;
+  line-height: 43px;
+  text-decoration: blink;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-filter: drop-shadow(0 7px 5px #039a9d);
+          filter: drop-shadow(0 7px 5px #039a9d);
+}
+
+.rate-gain.__page-wrapper .__take::after {
+  content: '';
+  background: url("../../assets/images/svg/icons/lineArrow.svg") center/contain no-repeat;
+  -webkit-filter: grayscale(1) brightness(5);
+          filter: grayscale(1) brightness(5);
+  width: 20px;
+  aspect-ratio: 1;
+  display: block;
+  -webkit-transition: all ease .15s;
+  transition: all ease .15s;
+  margin-left: 20px;
+}
+
 .rate-gain.__page-wrapper .__action {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -299,11 +325,30 @@
 
 @media (max-width: 991px) {
   .rate-gain.__page-wrapper .__hero #q-cards .swiper {
-    width: 90vw;
+    width: 87vw;
+    margin: 0;
+  }
+  .rate-gain.__page-wrapper .__hero #q-cards .swiper .swiper-wrapper {
+    overflow: hidden;
+  }
+  .rate-gain.__page-wrapper .__hero #q-cards .swiper .swiper-wrapper .swiper-slide {
+    -webkit-transition: ease-in-out;
+    transition: ease-in-out;
+    -webkit-transition-duration: 600ms;
+            transition-duration: 600ms;
   }
   .rate-gain.__page-wrapper .__hero #q-cards .swiper .__slideContent {
     padding: 20px;
   }
+}
+
+.rate-gain.__page-wrapper .__hero #q-cards .swiper .swiper-wrapper .swiper-slide {
+  -webkit-box-shadow: 0 0px 10px #818181;
+          box-shadow: 0 0px 10px #818181;
+}
+
+.rate-gain.__page-wrapper .__hero #q-cards .swiper .swiper-wrapper .swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.85;
 }
 
 .rate-gain.__page-wrapper .__hero::before {
@@ -351,6 +396,8 @@
   }
   .rate-gain.__page-wrapper .__hero .row > form {
     margin-bottom: 50px;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -360,7 +407,7 @@
 
 @media (max-width: 991px) {
   .rate-gain.__page-wrapper .__hero .row .__content {
-    width: 90vw;
+    width: 100%;
     margin: 0 auto;
   }
 }
@@ -556,6 +603,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions.radio-qs .radio-qset {

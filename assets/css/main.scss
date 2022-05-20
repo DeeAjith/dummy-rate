@@ -78,6 +78,27 @@ $popover-bg: $black;
         margin-top: auto;
     }
 
+    .__take {
+        font-size: 25px;
+        color: #ffffff;
+        font-weight: bold;
+        line-height: 43px;
+        text-decoration: blink;
+        display: flex;
+        filter: drop-shadow(0 7px 5px #039a9d);
+
+        &::after {
+            content: '';
+            background: url('../../assets/images/svg/icons/lineArrow.svg') center / contain no-repeat;
+            filter: grayscale(1) brightness(5);
+            width: 20px;
+            aspect-ratio: 1;
+            display: block;
+            transition: all ease .15s;
+            margin-left: 20px;
+        }
+    }
+
     .__action {
         display: inline-flex;
         align-items: center;
@@ -305,8 +326,6 @@ $popover-bg: $black;
 
     .__header {
         margin-block: 40px;
-
-        .__brand {}
     }
 
     .__hero {
@@ -328,10 +347,32 @@ $popover-bg: $black;
         #q-cards {
             @media (max-width: 991px) {
                 .swiper {
-                    width: 90vw;
+                    width: 87vw;
+                    margin: 0;
+
+                    .swiper-wrapper {
+                        overflow: hidden;
+
+                        .swiper-slide {
+                            transition: ease-in-out;
+                            transition-duration: 600ms;
+                        }
+                    }
 
                     .__slideContent {
                         padding: 20px;
+                    }
+                }
+            }
+
+            .swiper {
+                .swiper-wrapper {
+                    .swiper-slide {
+                        box-shadow: 0 0px 10px #818181;
+
+                        &:not(.swiper-slide-active) {
+                            opacity: 0.85;
+                        }
                     }
                 }
             }
@@ -375,6 +416,8 @@ $popover-bg: $black;
 
                 >form {
                     margin-bottom: 50px;
+                    margin: 0;
+                    padding: 0;
                 }
             }
 
@@ -382,7 +425,7 @@ $popover-bg: $black;
                 padding-right: 30%;
 
                 @media (max-width: 991px) {
-                    width: 90vw;
+                    width: 100%;
                     margin: 0 auto;
                 }
 
@@ -558,6 +601,7 @@ $popover-bg: $black;
                             margin-top: 30px;
                             margin-bottom: 30px;
                             overflow-y: auto;
+                            overflow-x: hidden;
 
                             .radio-qset {
                                 display: flex;

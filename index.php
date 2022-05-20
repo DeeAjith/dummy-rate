@@ -94,13 +94,9 @@ if (isset($_POST['submit'])) {
           <div class="__content">
             <h1>Content AI's Personalized Hotel Content Score Report.</h1>
             <p>Based on your unique inputs, Content AI could help your team achieve the desired revenue results.</p>
-            <span class="__action">Take This Assignment</a>
+            <span class="__take">Take This Assignment</a>
           </div>
         </div>
-        <!-- hero-image -->
-        <!-- <div class="col-sm-12 col-1336-7 col-lg-6 d-block" id="q-hero">
-          <img src="assets/images/svg/hero-illustration.svg" alt="RateGain Calculator">
-        </div> -->
         <!-- slideItems -->
         <form action="" method="post" class="col-sm-12 col-1336-7 col-lg-6" id="q-cards">
           <div class="swiper __rate-slider">
@@ -155,7 +151,7 @@ if (isset($_POST['submit'])) {
                     </li>
                   </ol>
                   <div class="__actions">
-                    <button class="__action">Next</button>
+                    <button class="__action __next">Next</button>
                   </div>
                 </div>
               </div>
@@ -226,7 +222,7 @@ if (isset($_POST['submit'])) {
                   </ol>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Next</button>
+                    <button class="__action __next">Next</button>
                   </div>
                 </div>
               </div>
@@ -292,7 +288,7 @@ if (isset($_POST['submit'])) {
                   </ol>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Next</button>
+                    <button class="__action __next">Next</button>
                   </div>
                 </div>
               </div>
@@ -356,7 +352,7 @@ if (isset($_POST['submit'])) {
                   </ol>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button class="__action">Next</button>
+                    <button class="__action __next">Next</button>
                   </div>
                 </div>
               </div>

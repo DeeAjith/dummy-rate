@@ -1,10 +1,12 @@
-// hero-switch
-// $(".home-hero .__heroContent .__action").on("click", function () {
-//     $('#q-cards,#q-hero').fadeIn(0, function () {
-//         // run extra code here
-//         $("#q-cards").switchClass("d-none", "d-block");
-//         $("#q-hero").switchClass("d-block", "d-none");
-//     });
+// $('.__next').click(function () {
+//     console.log('next click')
+//     if ($('.swiper-slide[aria-label="1 / 5"]').hasClass('swiper-slide-active')) {
+//         $('.__take').show();
+//         console.log('next show')
+//     } else {
+//         $('.__take').hide();
+//         console.log('next hide')
+//     }
 // });
 
 // q-cards
@@ -13,21 +15,46 @@ const swiper = new Swiper('.swiper', {
     allowTouchMove: false,
     slideShadows: false,
     // simulateTouch: false,
+    effect: 'cards',
+    cardsEffect: {
+        rotate: 15,
+    },
+    breakpoints: {
+        0: {
+            effect: 'creative',
+            creativeEffect: {
+                prev: {
+                    // will set `translateZ(-400px)` on previous slides
+                    translate: [0, 0, -400],
+                },
+                next: {
+                    // will set `translateX(100%)` on next slides
+                    translate: ['100%', 0, 0],
+                },
+            },
+        },
+        768: {
+            effect: 'cards',
+            cardsEffect: {
+                rotate: 15,
+                slideShadows: false,
+            },
+        }
+    },
     navigation: {
         nextEl: '.swiper-slide .__action:not(.__submit)',
         prevEl: '.swiper-slide .__previous',
     },
-    effect: 'creative',
-    creativeEffect: {
-        prev: {
-            translate: [0, 0, -400],
-        },
-        next: {
-            translate: ['100%', 0, 0],
-        },
-    },
 });
-$
+swiper.on("slideChange", function () {
+    console.log("slide changed - current slide is: " + this.realIndex)
+    if (this.realIndex == 0) {
+        $('.__take').slideDown();
+    }
+    else {
+        $('.__take').slideUp();
+    }
+});
 
 // userForm
 $('input.form-input').focus(function () {
