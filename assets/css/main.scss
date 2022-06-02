@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 $primaryColor: #00A4A7;
 $primaryColor2: #00AEB1;
@@ -19,7 +20,7 @@ $popover-bg: $black;
 
 * {
     font-family: "Inter", sans-serif;
-    // user-select: none;
+    user-select: none;
 }
 
 .rateGaincalc .popover {
@@ -80,7 +81,7 @@ $popover-bg: $black;
 
     .__take {
         font-size: 25px;
-        color: #ffffff;
+        color: $white;
         font-weight: bold;
         line-height: 43px;
         text-decoration: blink;
@@ -332,6 +333,7 @@ $popover-bg: $black;
         display: flex;
         height: 85vh;
         align-items: center;
+        justify-content: center;
 
         @media (max-width: 991px) {
             height: 100%;
@@ -454,7 +456,7 @@ $popover-bg: $black;
                     height: 100%;
                     align-items: flex-start;
                     padding: 30px 40px 20px;
-                    background: #FFFFFF;
+                    background: $white;
                     box-shadow: 0px 4px 70px transparentize($black, .75);
                     position: relative;
 
@@ -688,6 +690,74 @@ $popover-bg: $black;
                         }
                     }
 
+                }
+            }
+        }
+    }
+
+    .__output {
+        .rateGain-out {
+            // margin: 0 100%;
+            max-height: 70vh;
+            box-shadow: 0px 4px 70px transparentize($black, .75);
+
+            .__content {
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                max-height: inherit;
+                align-items: flex-start;
+                padding: 30px 40px 20px;
+                background: $white;
+                position: relative;
+
+                @media (max-width: 1367px) {
+                    padding: 20px 15px 20px 20px;
+                }
+
+                & {
+                    &::-webkit-scrollbar {
+                        width: 3px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: $black;
+                    }
+                }
+
+                .__header {
+                    line-height: 34px;
+                    text-align: center;
+                    margin: 0 auto;
+
+                    h1 {
+                        font-family: 'Rubik', sans-serif;
+                        color: #000;
+                        font-weight: 600;
+                        font-size: 24px;
+                        margin: 0;
+                    }
+
+                    span {
+                        font-family: 'Rubik', sans-serif;
+                        font-size: 16px;
+                    }
+
+                    .__text-highlight {
+                        color: $secondaryColor;
+                        font-weight: 500;
+                    }
+                }
+
+                .__graphVis {
+                    width: 100%;
+                    justify-content: space-between;
                 }
             }
         }

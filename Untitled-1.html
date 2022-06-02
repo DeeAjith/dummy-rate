@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bar chart with data value on the top of each bar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="chart-container" style="position: relative; width:340px;">
+        <canvas id="my_Chart" width="340" height="245"></canvas>
+    </div>
+    <script>
+        // Data define for bar chart
+        var myData = {
+            labels: ['Manual Effort', 'Content A.I'],
+            datasets: [{
+                fill: false,
+                backgroundColor: ['#0f72ee',
+                    '#000',],
+                data: [652, 235],
+            }]
+        };
+        // Options to display value on top of bars
+        var myoption = {
+            title: {
+                display: true
+            },
+            legend: {
+                display: false
+            },
+            tooltips: {
+                enabled: true
+            },
+            hover: {
+                animationDuration: 1
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0.1)",
+                    },
+                    barPercentage: .7,
+                    categoryPercentage: .7,
+                    ticks: {
+                        autoSkip: true,
+                        maxRotation: 0,
+                        minRotation: 0,
+                        fontSize: 12,
+                        fontColor: "Black",
+                        defaultFontFamily: "Arial, Helvetica, sans-serif"
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontSize: 12,
+                        fontColor: "Black",
+                        defaultFontFamily: "Arial, Helvetica, sans-serif",
+                    }
+
+                }]
+            },
+            animation: {
+                duration: 1,
+                onComplete: function () {
+                    var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = "rgba(0, 0, 0, 1)";
+                    ctx.textBaseline = 'bottom';
+                    this.data.datasets.forEach(function (dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function (bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                    });
+                }
+            }
+        };
+        //Code to drow Chart
+        var ctx = document.getElementById('my_Chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',    	// Define chart type
+            data: myData,    	// Chart data
+            options: myoption 	// Chart Options [This is optional paramenter use to add some extra things in the chart].
+        });
+    </script>
+</body>
+
+</html>

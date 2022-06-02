@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
   <title>Rate Gain | Calulator</title>
   <link rel="stylesheet" href="assets/css/main.css">
@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
         <img src="assets/images/logo.png" alt="RateGain">
       </div>
     </div>
-    <div class="container __hero">
+    <div class="container __hero d-none">
       <img class="svgBg" src="assets/images/svg/hero-background.svg">
       <div class="row home-hero slides">
         <div class="col-sm-12 col-1336-5 col-lg-6 __heroContent">
@@ -98,22 +98,12 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
         <!-- slideItems -->
-        <form action="" method="post" class="col-sm-12 col-1336-7 col-lg-6" id="q-cards">
+        <form action="" method="post" class="rate-calculator col-sm-12 col-1336-7 col-lg-6" id="q-cards">
           <div class="swiper __rate-slider">
             <div class="swiper-wrapper">
               <!-- Slide 1-->
               <div class="swiper-slide">
                 <div class="__slideContent">
-                  <?php if (isset($messages['active']) && $messages['active']) : ?>
-                    <div class="alert alert-info">
-                      <div class="heading">
-                        <span><?= $messages['heading'] ?></span>
-                      </div>
-                      <div class="content">
-                        <span><?= $messages['content'] ?></span>
-                      </div>
-                    </div>
-                  <?php endif; ?>
                   <h1><span>Questions:</span></h1>
                   <div class="__slideHead d-flex justify-content-between align-items-start">
                     <p><span>We need some details to generate a valid report</span></p>
@@ -262,7 +252,7 @@ if (isset($_POST['submit'])) {
                       <div class="__slideHead d-flex justify-content-between align-items-start">
                         <p>How frequently do you update the images for your properties?</p>
                         <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-bs-content="Expedia research shows that hotel listings with
-                          high-quality photos have a 63% higher click-through rate than those without.">
+                    high-quality photos have a 63% higher click-through rate than those without.">
                           <img src="assets/images/svg/icons/info-icon.svg"></span>
                       </div>
                       <fieldset class="radio-qset">
@@ -387,13 +377,33 @@ if (isset($_POST['submit'])) {
                   </fieldset>
                   <div class="__actions">
                     <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button type="submit" name="submit" class="__action __submit">Generate Report</button>
+                    <button type="submit" onsubmit="$('.container.__hero').hide();" name="submit" class="__action __submit">Generate Report</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+    <!-- output -->
+    <div class="container __output __hero">
+      <img class="svgBg" src="assets/images/svg/hero-background.svg">
+      <div class="rateGain-out">
+        <div class="__content">
+          <div class="__header">
+            <h1>Your hotel does not have enough bandwidth for regular updates,</h1>
+            <span>Ideally there's a requirement of <span class="__text-highlight">6 team member(s)</span> but can be managed by <span class="__text-highlight">3 member(s)</span> using content AI</span>
+          </div>
+          <div class="row p-0 m-0 __graphVis">
+            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+              <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
+            </div>
+            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+              <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -404,9 +414,104 @@ if (isset($_POST['submit'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="assets/js/ranger.js"></script>
   <script src="assets/js/index.js"></script>
 
+  <script>
+    var myData = {
+      labels: ['Manual Effort', 'Content A.I'],
+      datasets: [{
+        fill: false,
+        backgroundColor: ['#0f72ee',
+          '#000',
+        ],
+        data: [652, 232],
+      }]
+    };
+    var myData2 = {
+      labels: ['Manual Effort', 'Content A.I'],
+      datasets: [{
+        fill: false,
+        backgroundColor: ['red',
+          '#f4ced4',
+        ],
+        data: [152, 600],
+      }]
+    };
+    var myoption = {
+      title: {
+        display: true
+      },
+      legend: {
+        display: false
+      },
+      tooltips: {
+        enabled: true
+      },
+      hover: {
+        animationDuration: 2
+      },
+      scales: {
+        xAxes: [{
+          gridLines: {
+            color: "rgba(0, 0, 0, 0.05)",
+          },
+          barPercentage: .6,
+          categoryPercentage: .7,
+          ticks: {
+            autoSkip: true,
+            maxRotation: 0,
+            minRotation: 0,
+            fontSize: 12,
+            fontColor: "Black",
+            defaultFontFamily: "Arial, Helvetica, sans-serif"
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            color: "rgba(0, 0, 0, 0.05)",
+          },
+          ticks: {
+            beginAtZero: true,
+            fontSize: 12,
+            fontColor: "Black",
+            defaultFontFamily: "Arial, Helvetica, sans-serif",
+          }
+
+        }]
+      },
+      animation: {
+        duration: 1,
+        onComplete: function() {
+          var chartInstance = this.chart,
+            ctx = chartInstance.ctx;
+          ctx.textAlign = 'center';
+          ctx.fillStyle = "rgba(0, 0, 0, .5)";
+          ctx.textBaseline = 'bottom';
+          this.data.datasets.forEach(function(dataset, i) {
+            var meta = chartInstance.controller.getDatasetMeta(i);
+            meta.data.forEach(function(bar, index) {
+              var data = dataset.data[index];
+              ctx.fillText(data, bar._model.x, bar._model.y - 5);
+            });
+          });
+        }
+      }
+    };
+    var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
+    var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: myData,
+      options: myoption
+    });
+    var myChart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: myData2,
+      options: myoption
+    });
+  </script>
   <script>
     $(document).ready(function() {
       $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());
@@ -421,21 +526,20 @@ if (isset($_POST['submit'])) {
       });
       observer.observe($('.range.properties .ui-state-default')[0], {
         attributes: true,
-        attributeFilter: ['class']
+        attributeFilter: ['class'],
       });
       observer.observe($('.range.team .ui-state-default')[0], {
         attributes: true,
-        attributeFilter: ['class']
+        attributeFilter: ['class'],
       });
       observer.observe($('.range.partners .ui-state-default')[0], {
         attributes: true,
-        attributeFilter: ['class']
+        attributeFilter: ['class'],
       });
       observer.observe($('.range.average .ui-state-default')[0], {
         attributes: true,
-        attributeFilter: ['class']
+        attributeFilter: ['class'],
       });
-
     });
   </script>
 </body>
