@@ -46,14 +46,15 @@ if (isset($_POST['submit'])) {
   print_r(json_encode($efficiencyScalability));
 
 
-  $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
-  $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates." : "";
+  // $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
+  $messages['active'] = true;
+  $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates." : "Content AI's Reporting Tool";
   $messages['content'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ?
-    "Ideally there is a requirement of " . round($efficiencyScalability['manual_update'] / 160) .
-    " team member(s), but can be managed by " . round($efficiencyScalability['content_ai'] / 160) .
-    " member(s) using Content AI." : "";
+    "Ideally there is a requirement of <span class='__text-highlight'>" . round($efficiencyScalability['manual_update'] / 160) .
+    " team member(s)</span>, but can be managed by <span class='__text-highlight'>" . round($efficiencyScalability['content_ai'] / 160) .
+    " member(s)</span> using Content AI." : "Personalized Hotel Content Score Report";
 
-  // print_r(json_encode($messages));
+  print_r(json_encode($messages));
   // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
 }
 ?>
@@ -87,7 +88,7 @@ if (isset($_POST['submit'])) {
         <img src="assets/images/logo.png" alt="RateGain">
       </div>
     </div>
-    <div class="container __hero d-none">
+    <div class="container __hero <?= isset($_POST['submit']) ? 'd-none' : '' ?>">
       <img class="svgBg" src="assets/images/svg/hero-background.svg">
       <div class="row home-hero slides">
         <div class="col-sm-12 col-1336-5 col-lg-6 __heroContent">
@@ -386,26 +387,31 @@ if (isset($_POST['submit'])) {
         </form>
       </div>
     </div>
-    <!-- output -->
-    <div class="container __output __hero">
-      <img class="svgBg" src="assets/images/svg/hero-background.svg">
-      <div class="rateGain-out">
-        <div class="__content">
-          <div class="__header">
-            <h1>Your hotel does not have enough bandwidth for regular updates,</h1>
-            <span>Ideally there's a requirement of <span class="__text-highlight">6 team member(s)</span> but can be managed by <span class="__text-highlight">3 member(s)</span> using content AI</span>
-          </div>
-          <div class="row p-0 m-0 __graphVis">
-            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-              <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
+    <?php if (isset($_POST['submit'])) : ?>
+      <!-- output -->
+      <div class="container __output __hero">
+        <img class="svgBg" src="assets/images/svg/hero-background.svg">
+        <div class="rateGain-out">
+          <div class="__content">
+            <div class="__header">
+              <?php if ($messages['active']) : ?>
+                <h1><?= $messages['heading'] ?></h1>
+                <span><?= $messages['content'] ?></span>
+
+              <?php endif; ?>
             </div>
-            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-              <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
+            <div class="row p-0 m-0 __graphVis">
+              <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+                <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
+              </div>
+              <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+                <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <?php endif; ?>
   </div>
   </div>
 
@@ -418,100 +424,108 @@ if (isset($_POST['submit'])) {
   <script src="assets/js/ranger.js"></script>
   <script src="assets/js/index.js"></script>
 
-  <script>
-    var myData = {
-      labels: ['Manual Effort', 'Content A.I'],
-      datasets: [{
-        fill: false,
-        backgroundColor: ['#0f72ee',
-          '#000',
-        ],
-        data: [652, 232],
-      }]
-    };
-    var myData2 = {
-      labels: ['Manual Effort', 'Content A.I'],
-      datasets: [{
-        fill: false,
-        backgroundColor: ['red',
-          '#f4ced4',
-        ],
-        data: [152, 600],
-      }]
-    };
-    var myoption = {
-      title: {
-        display: true
-      },
-      legend: {
-        display: false
-      },
-      tooltips: {
-        enabled: true
-      },
-      hover: {
-        animationDuration: 2
-      },
-      scales: {
-        xAxes: [{
-          gridLines: {
-            color: "rgba(0, 0, 0, 0.05)",
-          },
-          barPercentage: .6,
-          categoryPercentage: .7,
-          ticks: {
-            autoSkip: true,
-            maxRotation: 0,
-            minRotation: 0,
-            fontSize: 12,
-            fontColor: "Black",
-            defaultFontFamily: "Arial, Helvetica, sans-serif"
-          }
-        }],
-        yAxes: [{
-          gridLines: {
-            color: "rgba(0, 0, 0, 0.05)",
-          },
-          ticks: {
-            beginAtZero: true,
-            fontSize: 12,
-            fontColor: "Black",
-            defaultFontFamily: "Arial, Helvetica, sans-serif",
-          }
+  <?php if (isset($_POST['submit'])) : ?>
 
+
+    <script>
+      var myData = {
+        labels: ['Manual Effort', 'Content A.I'],
+        datasets: [{
+          fill: false,
+          backgroundColor: ['#0f72ee',
+            '#000',
+          ],
+          data: [<?= round($propertyCreation['manual_effort']['single']) ?>,
+            <?= round($propertyCreation['content_ai']['single']) ?>
+          ],
         }]
-      },
-      animation: {
-        duration: 1,
-        onComplete: function() {
-          var chartInstance = this.chart,
-            ctx = chartInstance.ctx;
-          ctx.textAlign = 'center';
-          ctx.fillStyle = "rgba(0, 0, 0, .5)";
-          ctx.textBaseline = 'bottom';
-          this.data.datasets.forEach(function(dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            meta.data.forEach(function(bar, index) {
-              var data = dataset.data[index];
-              ctx.fillText(data, bar._model.x, bar._model.y - 5);
+      };
+      var myData2 = {
+        labels: ['Manual Effort', 'Content A.I'],
+        datasets: [{
+          fill: false,
+          backgroundColor: ['red',
+            '#f4ced4',
+          ],
+          data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
+            <?= round($propertyUpdate['content_ai']['single']) ?>
+          ],
+        }]
+      };
+      var myoption = {
+        title: {
+          display: true
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: true
+        },
+        hover: {
+          animationDuration: 2
+        },
+        scales: {
+          xAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.05)",
+            },
+            barPercentage: .6,
+            categoryPercentage: .7,
+            ticks: {
+              autoSkip: true,
+              maxRotation: 0,
+              minRotation: 0,
+              fontSize: 12,
+              fontColor: "Black",
+              defaultFontFamily: "Arial, Helvetica, sans-serif"
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              color: "rgba(0, 0, 0, 0.05)",
+            },
+            ticks: {
+              beginAtZero: true,
+              fontSize: 12,
+              fontColor: "Black",
+              defaultFontFamily: "Arial, Helvetica, sans-serif",
+            }
+
+          }]
+        },
+        animation: {
+          duration: 1,
+          onComplete: function() {
+            var chartInstance = this.chart,
+              ctx = chartInstance.ctx;
+            ctx.textAlign = 'center';
+            ctx.fillStyle = "rgba(0, 0, 0, .5)";
+            ctx.textBaseline = 'bottom';
+            this.data.datasets.forEach(function(dataset, i) {
+              var meta = chartInstance.controller.getDatasetMeta(i);
+              meta.data.forEach(function(bar, index) {
+                var data = dataset.data[index];
+                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+              });
             });
-          });
+          }
         }
-      }
-    };
-    var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
-    var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: myData,
-      options: myoption
-    });
-    var myChart2 = new Chart(ctx2, {
-      type: 'bar',
-      data: myData2,
-      options: myoption
-    });
-  </script>
+      };
+      var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
+      var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: myData,
+        options: myoption
+      });
+      var myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: myData2,
+        options: myoption
+      });
+    </script>
+  <?php endif; ?>
   <script>
     $(document).ready(function() {
       $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());
