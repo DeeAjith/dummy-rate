@@ -190,8 +190,8 @@ if (isset($_POST['submit'])) {
                 labels: ['Manual Effort', 'Content A.I'],
                 datasets: [{
                     fill: false,
-                    backgroundColor: ['#00A4A7',
-                        '#F19A00',
+                    backgroundColor: ['#F19A00',
+                        '#00A4A7',
                     ],
                     data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
                         <?= round($propertyUpdate['content_ai']['single']) ?>
