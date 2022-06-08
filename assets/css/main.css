@@ -798,6 +798,25 @@
   margin-bottom: 0;
 }
 
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis button.__toggle-HM {
+  border: 1px solid #000000;
+  border-radius: 6px;
+  background: #FFFFFF;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  font-weight: 500;
+  padding: 3px 9px;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer {
   display: -webkit-box;
   display: -ms-flexbox;

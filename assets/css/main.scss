@@ -789,6 +789,21 @@ $popover-bg: $black;
                         font-size: 15px;
                         margin-bottom: 0;
                     }
+
+                    button.__toggle-HM {
+                        border: 1px solid $black;
+                        border-radius: 6px;
+                        background: $white;
+                        position: absolute;
+                        right: 0;
+                        top: 40px;
+                        font-weight: 500;
+                        padding: 3px 9px;
+                        font-size: 12px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
                 }
 
                 .__footer {

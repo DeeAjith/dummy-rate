@@ -111,10 +111,22 @@ if (isset($_POST['submit'])) {
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
                                 <p>Effort saving in property creation</p>
+                                <button class="__toggle-HM">
+                                    Hours
+                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
+                                    </svg>
+                                </button>
                                 <canvas id="contentAi-graphs-1" width="450" height="350"></canvas>
                             </div>
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
                                 <p>Effort saving in regular property update</p>
+                                <button class="__toggle-HM">
+                                    Hours
+                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
+                                    </svg>
+                                </button>
                                 <canvas id="contentAi-graphs-2" width="450" height="350"></canvas>
                             </div>
                         </div>
