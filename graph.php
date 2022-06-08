@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
 
     $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
     $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
+    $propertyCreation['percentage'] = round((1 - round($propertyCreation['content_ai']['single']) / round($propertyCreation['manual_effort']['single'])) * 100);
 
     // print_r(json_encode($propertyCreation));
 
@@ -33,6 +34,7 @@ if (isset($_POST['submit'])) {
 
     $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
     $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
+    $propertyUpdate['percentage'] = round((1 - round($propertyUpdate['content_ai']['single']) / round($propertyUpdate['manual_effort']['single'])) * 100);
 
     // print_r(json_encode($propertyUpdate));
 
@@ -56,6 +58,9 @@ if (isset($_POST['submit'])) {
 
     // print_r(json_encode($messages));
     // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
+} else {
+    header('Location: /');
+    exit();
 }
 ?>
 
