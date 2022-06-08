@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
     // print_r(json_encode($messages));
     // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
 } else {
-    header('Location: /');
+    header('Location: index.php');
     exit();
 }
 ?>
