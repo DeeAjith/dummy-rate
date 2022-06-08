@@ -715,7 +715,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 30px 40px 20px;
+  padding: 30px 60px 20px;
   background: #FFFFFF;
   position: relative;
 }
@@ -738,6 +738,7 @@
   line-height: 34px;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__header h1 {
@@ -760,8 +761,16 @@
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis {
   width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 40px;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis .__title {
+  color: #000000;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=main.css.map */

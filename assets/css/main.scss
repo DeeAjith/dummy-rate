@@ -697,7 +697,6 @@ $popover-bg: $black;
 
     .__output {
         .rateGain-out {
-            // margin: 0 100%;
             max-height: 70vh;
             box-shadow: 0px 4px 70px transparentize($black, .75);
 
@@ -709,7 +708,7 @@ $popover-bg: $black;
                 height: 100%;
                 max-height: inherit;
                 align-items: flex-start;
-                padding: 30px 40px 20px;
+                padding: 30px 60px 20px;
                 background: $white;
                 position: relative;
 
@@ -735,6 +734,7 @@ $popover-bg: $black;
                     line-height: 34px;
                     text-align: center;
                     margin: 0 auto;
+                    margin-bottom: 40px;
 
                     h1 {
                         font-family: 'Rubik', sans-serif;
@@ -757,7 +757,27 @@ $popover-bg: $black;
 
                 .__graphVis {
                     width: 100%;
-                    justify-content: space-between;
+                    justify-content: center;
+                    gap: 40px;
+
+                    // .chart-container {
+                    //     canvas {
+                    //         transition: all .2s ease-in-out;
+
+                    //         &:hover {
+                    //             border-radius: 10px;
+                    //             box-shadow: 5px 5px 10px transparentize($black, .75);
+                    //             transform: scale(1.05) translateX(5px);
+                    //         }
+                    //     }
+                    // }
+
+                    .__title {
+                        color: $black;
+                        font-weight: 700;
+                        font-size: 15px;
+                        margin-bottom: 0;
+                    }
                 }
             }
         }

@@ -61,14 +61,7 @@ $('input.form-input').focus(function () {
     $(this).parents('.field').addClass('focused');
 });
 
-$('input').blur(function () {
-    var inputValue = $(this).val();
-    if (inputValue == "") {
-        $(this).parents('.field').removeClass('focused');
-    } else {
-        $(this).addClass('filled');
-    }
-})
+
 
 // popover init
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))

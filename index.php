@@ -402,9 +402,11 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="row p-0 m-0 __graphVis">
               <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+                <p class="__title">Effort saving in property creation</p>
                 <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
               </div>
               <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
+                <p class="__title">Effort saving in property creation</p>
                 <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
               </div>
             </div>
@@ -462,9 +464,10 @@ if (isset($_POST['submit'])) {
         tooltips: {
           enabled: true
         },
-        hover: {
-          animationDuration: 2
+        "layout": {
+          "padding": 0
         },
+        "responsive": true,
         scales: {
           xAxes: [{
             gridLines: {
@@ -482,6 +485,10 @@ if (isset($_POST['submit'])) {
             }
           }],
           yAxes: [{
+            "scaleLabel": {
+              "display": true,
+              "labelString": "Hours"
+            },
             gridLines: {
               color: "rgba(0, 0, 0, 0.05)",
             },
