@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
         <!-- slideItems -->
-        <form action="/graph.php" method="post" class="rate-calculator col-sm-12 col-1336-7 col-lg-6" id="q-cards">
+        <form action="graph.php" method="post" class="rate-calculator col-sm-12 col-1336-7 col-lg-6" id="q-cards">
           <div class="swiper __rate-slider">
             <div class="swiper-wrapper">
               <!-- Slide 1-->
