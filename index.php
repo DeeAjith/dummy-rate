@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
   $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
   $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
 
-  print_r(json_encode($propertyCreation));
+  // print_r(json_encode($propertyCreation));
 
 
   $propertyUpdate['manual_effort']['single'] = (($churn + $_POST['properties']) * 0.75 * $_POST['ota'] * 4);
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
   $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
   $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
 
-  print_r(json_encode($propertyUpdate));
+  // print_r(json_encode($propertyUpdate));
 
 
   $efficiencyScalability['hours_available'] = $_POST['team'] * 160;
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
   $efficiencyScalability['team_effort'] = 1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update'];
   $efficiencyScalability['hours_saved'] = $efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai'];
 
-  print_r(json_encode($efficiencyScalability));
+  // print_r(json_encode($efficiencyScalability));
 
 
   // $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
     " team member(s)</span>, but can be managed by <span class='__text-highlight'>" . round($efficiencyScalability['content_ai'] / 160) .
     " member(s)</span> using Content AI." : "Personalized Hotel Content Score Report";
 
-  print_r(json_encode($messages));
+  // print_r(json_encode($messages));
   // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
 }
 ?>
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
         <!-- slideItems -->
-        <form action="" method="post" class="rate-calculator col-sm-12 col-1336-7 col-lg-6" id="q-cards">
+        <form action="/graph.php" method="post" class="rate-calculator col-sm-12 col-1336-7 col-lg-6" id="q-cards">
           <div class="swiper __rate-slider">
             <div class="swiper-wrapper">
               <!-- Slide 1-->
