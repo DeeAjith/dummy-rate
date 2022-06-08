@@ -61,6 +61,11 @@ $('input.form-input').focus(function () {
     $(this).parents('.field').addClass('focused');
 });
 
+$(".rate-gain.__page-wrapper input[type='text']:is(.form-input)").keyup(function (event) {
+    if (event.keyCode === 13) {
+        $("button").click();
+    }
+});
 
 
 // popover init

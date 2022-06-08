@@ -375,11 +375,11 @@ if (isset($_POST['submit'])) {
                       <input required id="howdy" type="text" class="w-100 input-text form-input">
                       <label for="howdy">How did you hear about us?</label>
                     </div>
+                    <div class="__actions">
+                      <a tabindex="1" href="javascript:void(0)" class="__previous">Back</a>
+                      <button tabindex="0" type="submit" onsubmit="$('.container.__hero').hide();" name="submit" class="__action __submit">Generate Report</button>
+                    </div>
                   </fieldset>
-                  <div class="__actions">
-                    <a href="javascript:void(0)" class="__previous">Back</a>
-                    <button type="submit" onsubmit="$('.container.__hero').hide();" name="submit" class="__action __submit">Generate Report</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -387,33 +387,6 @@ if (isset($_POST['submit'])) {
         </form>
       </div>
     </div>
-    <?php if (isset($_POST['submit'])) : ?>
-      <!-- output -->
-      <div class="container __output __hero">
-        <img class="svgBg" src="assets/images/svg/hero-background.svg">
-        <div class="rateGain-out">
-          <div class="__content">
-            <div class="__header">
-              <?php if ($messages['active']) : ?>
-                <h1><?= $messages['heading'] ?></h1>
-                <span><?= $messages['content'] ?></span>
-
-              <?php endif; ?>
-            </div>
-            <div class="row p-0 m-0 __graphVis">
-              <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-                <p class="__title">Effort saving in property creation</p>
-                <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
-              </div>
-              <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-                <p class="__title">Effort saving in property creation</p>
-                <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
   </div>
   </div>
 
@@ -422,117 +395,9 @@ if (isset($_POST['submit'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="assets/js/ranger.js"></script>
   <script src="assets/js/index.js"></script>
 
-  <?php if (isset($_POST['submit'])) : ?>
-
-
-    <script>
-      var myData = {
-        labels: ['Manual Effort', 'Content A.I'],
-        datasets: [{
-          fill: false,
-          backgroundColor: ['#0f72ee',
-            '#000',
-          ],
-          data: [<?= round($propertyCreation['manual_effort']['single']) ?>,
-            <?= round($propertyCreation['content_ai']['single']) ?>
-          ],
-        }]
-      };
-      var myData2 = {
-        labels: ['Manual Effort', 'Content A.I'],
-        datasets: [{
-          fill: false,
-          backgroundColor: ['red',
-            '#f4ced4',
-          ],
-          data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
-            <?= round($propertyUpdate['content_ai']['single']) ?>
-          ],
-        }]
-      };
-      var myoption = {
-        title: {
-          display: true
-        },
-        legend: {
-          display: false
-        },
-        tooltips: {
-          enabled: true
-        },
-        "layout": {
-          "padding": 0
-        },
-        "responsive": true,
-        scales: {
-          xAxes: [{
-            gridLines: {
-              color: "rgba(0, 0, 0, 0.05)",
-            },
-            barPercentage: .6,
-            categoryPercentage: .7,
-            ticks: {
-              autoSkip: true,
-              maxRotation: 0,
-              minRotation: 0,
-              fontSize: 12,
-              fontColor: "Black",
-              defaultFontFamily: "Arial, Helvetica, sans-serif"
-            }
-          }],
-          yAxes: [{
-            "scaleLabel": {
-              "display": true,
-              "labelString": "Hours"
-            },
-            gridLines: {
-              color: "rgba(0, 0, 0, 0.05)",
-            },
-            ticks: {
-              beginAtZero: true,
-              fontSize: 12,
-              fontColor: "Black",
-              defaultFontFamily: "Arial, Helvetica, sans-serif",
-            }
-
-          }]
-        },
-        animation: {
-          duration: 1,
-          onComplete: function() {
-            var chartInstance = this.chart,
-              ctx = chartInstance.ctx;
-            ctx.textAlign = 'center';
-            ctx.fillStyle = "rgba(0, 0, 0, .5)";
-            ctx.textBaseline = 'bottom';
-            this.data.datasets.forEach(function(dataset, i) {
-              var meta = chartInstance.controller.getDatasetMeta(i);
-              meta.data.forEach(function(bar, index) {
-                var data = dataset.data[index];
-                ctx.fillText(data, bar._model.x, bar._model.y - 5);
-              });
-            });
-          }
-        }
-      };
-      var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
-      var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: myData,
-        options: myoption
-      });
-      var myChart2 = new Chart(ctx2, {
-        type: 'bar',
-        data: myData2,
-        options: myoption
-      });
-    </script>
-  <?php endif; ?>
   <script>
     $(document).ready(function() {
       $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());

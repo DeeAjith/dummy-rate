@@ -102,15 +102,33 @@ if (isset($_POST['submit'])) {
                             <?php endif; ?>
                         </div>
                         <div class="row p-0 m-0 __graphVis">
-                            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-                                <canvas id="contentAi-graphs-1" width="340" height="245"></canvas>
+                            <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
+                                <p>Effort saving in property creation</p>
+                                <canvas id="contentAi-graphs-1" width="450" height="350"></canvas>
                             </div>
-                            <div class="col-6 p-0 chart-container" style="position: relative; width:340px;">
-                                <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
+                            <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
+                                <p>Effort saving in regular property update</p>
+                                <canvas id="contentAi-graphs-2" width="450" height="350"></canvas>
                             </div>
                         </div>
-                        <div class="__header">
-                            <span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                        <div class="__header __footer">
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                        </div>
+                    </div>
+                    <div class="__content">
+                        <div class="row p-0 m-0 __graphVis">
+                            <div class="col-12 p-0 chart-container" style="position: relative; width:75%; height: 250px;">
+                                <p>Efficiency & Scalability of Content updates via Content AI</p>
+                                <canvas style="width:100%; height: 250px;" id="contentAi-graphs-3"></canvas>
+                            </div>
+                        </div>
+                        <div class="__header __footer">
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                        </div>
+                        <div class="__info">
+                            <h1>Manage & Distribute Your Hotel's Content faster</h1>
+                            <p>Avoid the constant manual back and forth, email threads, cumbersome spreadsheets and copy/paste tasks. Free up so much of your team’s average work week!</p>
+                            <button class="__action">Learn more about Content AI</button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +142,7 @@ if (isset($_POST['submit'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="assets/js/ranger.js"></script>
     <script src="assets/js/index.js"></script>
 
@@ -136,8 +154,8 @@ if (isset($_POST['submit'])) {
                 labels: ['Manual Effort', 'Content A.I'],
                 datasets: [{
                     fill: false,
-                    backgroundColor: ['#0f72ee',
-                        '#000',
+                    backgroundColor: ['#00A4A7',
+                        '#F19A00',
                     ],
                     data: [<?= round($propertyCreation['manual_effort']['single']) ?>,
                         <?= round($propertyCreation['content_ai']['single']) ?>
@@ -148,8 +166,20 @@ if (isset($_POST['submit'])) {
                 labels: ['Manual Effort', 'Content A.I'],
                 datasets: [{
                     fill: false,
-                    backgroundColor: ['red',
-                        '#f4ced4',
+                    backgroundColor: ['#00A4A7',
+                        '#F19A00',
+                    ],
+                    data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
+                        <?= round($propertyUpdate['content_ai']['single']) ?>
+                    ],
+                }]
+            };
+            var myData3 = {
+                labels: ['Manual Update', 'Content A.I'],
+                datasets: [{
+                    fill: false,
+                    backgroundColor: ['#00A4A7',
+                        '#F19A00',
                     ],
                     data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
                         <?= round($propertyUpdate['content_ai']['single']) ?>
@@ -168,6 +198,11 @@ if (isset($_POST['submit'])) {
                 },
                 hover: {
                     animationDuration: 2
+                },
+                animation: {
+                    onProgress: function(animation) {
+                        progress.value = animation.currentStep / animation.numSteps;
+                    }
                 },
                 scales: {
                     xAxes: [{
@@ -218,12 +253,18 @@ if (isset($_POST['submit'])) {
             };
             var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
             var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
+            var ctx3 = document.getElementById('contentAi-graphs-3').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: myData,
                 options: myoption
             });
             var myChart2 = new Chart(ctx2, {
+                type: 'bar',
+                data: myData2,
+                options: myoption
+            });
+            var myChart3 = new Chart(ctx3, {
                 type: 'bar',
                 data: myData2,
                 options: myoption

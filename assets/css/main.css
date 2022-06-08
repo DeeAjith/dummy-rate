@@ -69,7 +69,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: auto;
+  margin-top: 25px;
 }
 
 .rate-gain.__page-wrapper .__take {
@@ -609,7 +609,7 @@
   min-height: 220px;
   max-height: 90%;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -646,6 +646,10 @@
 
 .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .__questions.radio-qs::-webkit-scrollbar-thumb {
   background-color: #000000;
+}
+
+.rate-gain.__page-wrapper .__hero .row.slides .__slideContent .detailsForm {
+  height: 100%;
 }
 
 .rate-gain.__page-wrapper .__hero .row.slides .__slideContent .detailsForm .field {
@@ -694,14 +698,29 @@
   mix-blend-mode: screen;
 }
 
+.rate-gain.__page-wrapper .__output {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: auto;
+}
+
 .rate-gain.__page-wrapper .__output .rateGain-out {
-  max-height: 70vh;
+  max-height: 80vh;
   -webkit-box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out::-webkit-scrollbar {
+  width: 3px;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content {
-  overflow-y: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -724,14 +743,6 @@
   .rate-gain.__page-wrapper .__output .rateGain-out .__content {
     padding: 20px 15px 20px 20px;
   }
-}
-
-.rate-gain.__page-wrapper .__output .rateGain-out .__content::-webkit-scrollbar {
-  width: 3px;
-}
-
-.rate-gain.__page-wrapper .__output .rateGain-out .__content::-webkit-scrollbar-thumb {
-  background-color: #000000;
 }
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__header {
@@ -767,10 +778,88 @@
   gap: 40px;
 }
 
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis .chart-container p {
+  padding-left: 20px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis .__title {
   color: #000000;
   font-weight: 700;
   font-size: 15px;
   margin-bottom: 0;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: normal;
+  text-align: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer > span {
+  font-size: 14px;
+  width: 60%;
+  font-weight: 500;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer > span .__text-highlight {
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info h1 {
+  color: #000000;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info p {
+  line-height: normal;
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action {
+  margin-top: 20px;
+  background-color: #F19A00;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+  color: #FFFFFF;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action:hover {
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+  -webkit-transform: unset;
+          transform: unset;
+  background-color: #ffa70c;
+}
+
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action::after {
+  -webkit-filter: grayscale(1) brightness(5);
+          filter: grayscale(1) brightness(5);
+  mix-blend-mode: screen;
 }
 /*# sourceMappingURL=main.css.map */
