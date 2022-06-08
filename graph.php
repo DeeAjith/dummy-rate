@@ -109,8 +109,8 @@ if (isset($_POST['submit'])) {
                                 <canvas id="contentAi-graphs-2" width="340" height="245"></canvas>
                             </div>
                         </div>
-                        <div>
-                            <span>Improve your property creation efficiency by 92%. Save almost upto 420 hrs or 601 minutes with in creating a new property with AI powered content optimization solution. </span>
+                        <div class="__header">
+                            <span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                 </div>
