@@ -112,23 +112,27 @@ if (isset($_POST['submit'])) {
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
                                 <p>Effort saving in property creation</p>
-                                <button class="__toggle-HM">
+                                <button class="__toggle-HM" timeat="hours">
                                     Hours
                                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
                                     </svg>
                                 </button>
-                                <canvas id="contentAi-graphs-1" width="450" height="350"></canvas>
+                                <input type="hidden" class="manual" value="<?= round($propertyCreation['manual_effort']['single']) ?>">
+                                <input type="hidden" class="content" value="<?= round($propertyCreation['content_ai']['single']) ?>">
+                                <canvas id="contentAi-graphs-1" class="graphs" width="450" height="350"></canvas>
                             </div>
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
                                 <p>Effort saving in regular property update</p>
-                                <button class="__toggle-HM">
+                                <button class="__toggle-HM" timeat="hours">
                                     Hours
                                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
                                     </svg>
                                 </button>
-                                <canvas id="contentAi-graphs-2" width="450" height="350"></canvas>
+                                <input type="hidden" class="manual" value="<?= round($propertyUpdate['manual_effort']['single']) ?>">
+                                <input type="hidden" class="content" value="<?= round($propertyUpdate['content_ai']['single']) ?>">
+                                <canvas id="contentAi-graphs-2" class="graphs" width="450" height="350"></canvas>
                             </div>
                         </div>
                         <div class="__header __footer">
@@ -139,7 +143,7 @@ if (isset($_POST['submit'])) {
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-12 p-0 chart-container" style="position: relative; width:75%; height: 250px;">
                                 <p>Efficiency & Scalability of Content updates via Content AI</p>
-                                <canvas style="width:100%; height: 250px;" id="contentAi-graphs-3"></canvas>
+                                <canvas style="width:100%; height: 250px;" class="graphs" id="contentAi-graphs-3"></canvas>
                             </div>
                         </div>
                         <div class="__header __footer">
@@ -293,32 +297,108 @@ if (isset($_POST['submit'])) {
     <?php endif; ?>
     <script>
         $(document).ready(function() {
-            $('.range.properties .calculation').val($('.range.properties .ui-state-default').html());
-            $('.range.team .calculation').val($('.range.team .ui-state-default').html());
-            $('.range.partners .calculation').val($('.range.partners .ui-state-default').html());
-            $('.range.average .calculation').val($('.range.average .ui-state-default').html());
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    var attributeValue = $(mutation.target).html();
-                    $(mutation.target).siblings('.calculation').val(attributeValue);
+
+            var myoption = {
+                title: {
+                    display: true
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    enabled: true
+                },
+                hover: {
+                    animationDuration: 2
+                },
+                animation: {
+                    onProgress: function(animation) {
+                        progress.value = animation.currentStep / animation.numSteps;
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0.05)",
+                        },
+                        barPercentage: .6,
+                        categoryPercentage: .7,
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 0,
+                            minRotation: 0,
+                            fontSize: 12,
+                            fontColor: "Black",
+                            defaultFontFamily: "Arial, Helvetica, sans-serif"
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0.05)",
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            fontSize: 12,
+                            fontColor: "Black",
+                            defaultFontFamily: "Arial, Helvetica, sans-serif",
+                        }
+
+                    }]
+                },
+                animation: {
+                    duration: 1,
+                    onComplete: function() {
+                        var chartInstance = this.chart,
+                            ctx = chartInstance.ctx;
+                        ctx.textAlign = 'center';
+                        ctx.fillStyle = "rgba(0, 0, 0, .5)";
+                        ctx.textBaseline = 'bottom';
+                        this.data.datasets.forEach(function(dataset, i) {
+                            var meta = chartInstance.controller.getDatasetMeta(i);
+                            meta.data.forEach(function(bar, index) {
+                                var data = dataset.data[index];
+                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                            });
+                        });
+                    }
+                }
+            };
+            $('.__toggle-HM').click(function() {
+                var canvasId = $(this).parent().children('canvas.graphs').attr('id');
+                $('#' + canvasId).remove(); // this is my <canvas> element
+                $(this).parent().append('<canvas id="' + canvasId + '" class="graphs" width="450" height="350"><canvas>');
+                var contentElement = document.getElementById(canvasId).getContext('2d');
+                var manual = $(this).siblings('.manual').val();
+                var content = $(this).siblings('.content').val();
+                if ($(this).attr('timeat') == 'hours') {
+                    manual = manual * 60;
+                    content = content * 60;
+                    $(this).attr('timeat', 'minutes');
+                } else {
+                    manual = manual;
+                    content = content;
+                    $(this).attr('timeat', 'hours');
+                }
+                var data = {
+                    labels: ['Manual Effort', 'Content A.I'],
+                    datasets: [{
+                        fill: false,
+                        backgroundColor: ['#00A4A7',
+                            '#F19A00',
+                        ],
+                        data: [manual, content],
+                    }]
+                };
+                makeGraph(contentElement, data, myoption, canvasId);
+            });
+
+            function makeGraph(graphElement, myData3, myoption, canvasId) {
+                new Chart(graphElement, {
+                    type: 'bar',
+                    data: myData3,
+                    options: myoption
                 });
-            });
-            observer.observe($('.range.properties .ui-state-default')[0], {
-                attributes: true,
-                attributeFilter: ['class'],
-            });
-            observer.observe($('.range.team .ui-state-default')[0], {
-                attributes: true,
-                attributeFilter: ['class'],
-            });
-            observer.observe($('.range.partners .ui-state-default')[0], {
-                attributes: true,
-                attributeFilter: ['class'],
-            });
-            observer.observe($('.range.average .ui-state-default')[0], {
-                attributes: true,
-                attributeFilter: ['class'],
-            });
+            }
         });
     </script>
 </body>
