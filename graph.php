@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
     $propertyCreation['content_ai']['multiple'] = $propertyCreation['content_ai']['single'] * 60;
 
     $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
+    $propertyCreation['minutes']['single'] = round($propertyCreation['hours_saved']['single']) * 60;
     $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
     $propertyCreation['percentage'] = round((1 - round($propertyCreation['content_ai']['single']) / round($propertyCreation['manual_effort']['single'])) * 100);
 
@@ -33,6 +34,7 @@ if (isset($_POST['submit'])) {
     $propertyUpdate['content_ai']['multiple'] = $propertyUpdate['content_ai']['single'] * 60;
 
     $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
+    $propertyUpdate['minutes']['single'] = round($propertyUpdate['hours_saved']['single']) * 60;
     $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
     $propertyUpdate['percentage'] = round((1 - round($propertyUpdate['content_ai']['single']) / round($propertyUpdate['manual_effort']['single'])) * 100);
 
@@ -117,7 +119,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                         <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= $propertyCreation['minutes']['single'] ?> minutes</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__content">
