@@ -44,10 +44,11 @@ if (isset($_POST['submit'])) {
     $efficiencyScalability['hours_available'] = $_POST['team'] * 160;
     $efficiencyScalability['manual_update'] = (($churn + $_POST['properties']) * 2.5 * $_POST['ota']) + (($churn + $_POST['properties']) * $_POST['ota'] * 4 * 0.75);
     $efficiencyScalability['content_ai'] = (((($churn + $_POST['properties']) * 2.5 * $_POST['ota']) + (($churn + $_POST['properties']) * 4 * 0.75 * $_POST['ota']))) / (0.05 * $_POST['ota'] + $_POST['ota']);
-    $efficiencyScalability['team_effort'] = 1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update'];
-    $efficiencyScalability['hours_saved'] = $efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai'];
+    $efficiencyScalability['team_effort'] = round((1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update']) * 100);
+    $efficiencyScalability['hours_saved'] = round($efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai']);
+    $efficiencyScalability['minutes'] = $efficiencyScalability['hours_saved'] * 60;
 
-    // print_r(json_encode($efficiencyScalability));
+    print_r(json_encode($efficiencyScalability));
 
 
     // $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
@@ -142,7 +143,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                         <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= $efficiencyScalability['minutes'] ?> minutes</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__info">
@@ -200,8 +201,8 @@ if (isset($_POST['submit'])) {
                     backgroundColor: ['#00A4A7',
                         '#F19A00',
                     ],
-                    data: [<?= round($propertyUpdate['manual_effort']['single']) ?>,
-                        <?= round($propertyUpdate['content_ai']['single']) ?>
+                    data: [<?= round($efficiencyScalability['manual_update']) ?>,
+                        <?= round($efficiencyScalability['content_ai']) ?>
                     ],
                 }]
             };
@@ -285,7 +286,7 @@ if (isset($_POST['submit'])) {
             });
             var myChart3 = new Chart(ctx3, {
                 type: 'bar',
-                data: myData2,
+                data: myData3,
                 options: myoption
             });
         </script>
