@@ -812,6 +812,7 @@
           justify-content: center;
   gap: 10px;
   margin-top: 50px;
+  margin-bottom: 0;
 }
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer > span {
@@ -825,21 +826,20 @@
   font-weight: bold;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info {
-  margin-top: 30px;
-  margin: 0 auto;
+.rate-gain.__page-wrapper .__output .rateGain-out .__info {
+  margin: 10px auto 40px;
   text-align: center;
   width: 50%;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info h1 {
+.rate-gain.__page-wrapper .__output .rateGain-out .__info h1 {
   color: #000000;
   font-weight: 700;
   font-size: 20px;
   margin: 0;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info p {
+.rate-gain.__page-wrapper .__output .rateGain-out .__info p {
   line-height: normal;
   color: #000000;
   font-weight: 500;
@@ -847,7 +847,7 @@
   margin: 0;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action {
+.rate-gain.__page-wrapper .__output .rateGain-out .__info .__action {
   margin-top: 20px;
   background-color: #F19A00;
   -webkit-box-shadow: unset;
@@ -855,7 +855,7 @@
   color: #FFFFFF;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action:hover {
+.rate-gain.__page-wrapper .__output .rateGain-out .__info .__action:hover {
   -webkit-box-shadow: unset;
           box-shadow: unset;
   -webkit-transform: unset;
@@ -863,7 +863,7 @@
   background-color: #ffa70c;
 }
 
-.rate-gain.__page-wrapper .__output .rateGain-out .__content .__info .__action::after {
+.rate-gain.__page-wrapper .__output .rateGain-out .__info .__action::after {
   -webkit-filter: grayscale(1) brightness(5);
           filter: grayscale(1) brightness(5);
   mix-blend-mode: screen;

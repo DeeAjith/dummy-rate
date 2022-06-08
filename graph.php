@@ -132,11 +132,11 @@ if (isset($_POST['submit'])) {
                         <div class="__header __footer">
                             <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'>92% </span>. Save almost upto <span class='__text-highlight'> 420 hrs or 601 minutes</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
-                        <div class="__info">
-                            <h1>Manage & Distribute Your Hotel's Content faster</h1>
-                            <p>Avoid the constant manual back and forth, email threads, cumbersome spreadsheets and copy/paste tasks. Free up so much of your team’s average work week!</p>
-                            <button class="__action">Learn more about Content AI</button>
-                        </div>
+                    </div>
+                    <div class="__info">
+                        <h1>Manage & Distribute Your Hotel's Content faster</h1>
+                        <p>Avoid the constant manual back and forth, email threads, cumbersome spreadsheets and copy/paste tasks. Free up so much of your team’s average work week!</p>
+                        <button class="__action">Learn more about Content AI</button>
                     </div>
                 </div>
             </div>

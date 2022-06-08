@@ -799,6 +799,7 @@ $popover-bg: $black;
                     justify-content: center;
                     gap: 10px;
                     margin-top: 50px;
+                    margin-bottom: 0;
 
                     >span {
                         font-size: 14px;
@@ -812,44 +813,43 @@ $popover-bg: $black;
 
                     }
                 }
+            }
 
-                .__info {
-                    margin-top: 30px;
-                    margin: 0 auto;
-                    text-align: center;
-                    width: 50%;
+            .__info {
+                margin: 10px auto 40px;
+                text-align: center;
+                width: 50%;
 
-                    h1 {
-                        color: $black;
-                        font-weight: 700;
-                        font-size: 20px;
-                        margin: 0;
-                    }
+                h1 {
+                    color: $black;
+                    font-weight: 700;
+                    font-size: 20px;
+                    margin: 0;
+                }
 
-                    p {
-                        line-height: normal;
-                        color: $black;
-                        font-weight: 500;
-                        font-size: 14px;
-                        margin: 0;
-                    }
+                p {
+                    line-height: normal;
+                    color: $black;
+                    font-weight: 500;
+                    font-size: 14px;
+                    margin: 0;
+                }
 
-                    .__action {
-                        margin-top: 20px;
-                        background-color: $secondaryColor;
+                .__action {
+                    margin-top: 20px;
+                    background-color: $secondaryColor;
+                    box-shadow: unset;
+                    color: $white;
+
+                    &:hover {
                         box-shadow: unset;
-                        color: $white;
+                        transform: unset;
+                        background-color: lighten($secondaryColor, 5);
+                    }
 
-                        &:hover {
-                            box-shadow: unset;
-                            transform: unset;
-                            background-color: lighten($secondaryColor, 5);
-                        }
-
-                        &::after {
-                            filter: grayscale(1) brightness(5);
-                            mix-blend-mode: screen;
-                        }
+                    &::after {
+                        filter: grayscale(1) brightness(5);
+                        mix-blend-mode: screen;
                     }
                 }
             }
