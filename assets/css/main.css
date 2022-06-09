@@ -795,7 +795,6 @@ body::-webkit-scrollbar-thumb {
   color: #000000;
   font-size: 18px;
   font-weight: 700;
-  margin: 0;
 }
 
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis .__title {

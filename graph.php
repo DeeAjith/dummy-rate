@@ -211,17 +211,11 @@ if (isset($_POST['submit'])) {
                 }]
             };
             var myoption = {
-                title: {
-                    display: true
-                },
                 legend: {
                     display: false
                 },
-                tooltips: {
-                    enabled: true
-                },
                 hover: {
-                    animationDuration: 2
+                    animationDuration: 1,
                 },
                 scales: {
                     xAxes: [{
@@ -236,7 +230,8 @@ if (isset($_POST['submit'])) {
                             minRotation: 0,
                             fontSize: 12,
                             fontColor: "Black",
-                            defaultFontFamily: "Arial, Helvetica, sans-serif"
+                            beginAtZero: true,
+                            defaultFontFamily: "Inter, Helvetica, sans-serif"
                         }
                     }],
                     yAxes: [{
@@ -247,13 +242,14 @@ if (isset($_POST['submit'])) {
                             beginAtZero: true,
                             fontSize: 12,
                             fontColor: "Black",
-                            defaultFontFamily: "Arial, Helvetica, sans-serif",
+                            defaultFontFamily: "Inter, Helvetica, sans-serif",
                         }
 
                     }]
                 },
                 animation: {
-                    duration: 1,
+                    easing: 'easeInSine',
+                    duration: 1000,
                     onComplete: function() {
                         var chartInstance = this.chart,
                             ctx = chartInstance.ctx;
