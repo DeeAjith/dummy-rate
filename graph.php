@@ -223,11 +223,6 @@ if (isset($_POST['submit'])) {
                 hover: {
                     animationDuration: 2
                 },
-                animation: {
-                    onProgress: function(animation) {
-                        progress.value = animation.currentStep / animation.numSteps;
-                    }
-                },
                 scales: {
                     xAxes: [{
                         gridLines: {
