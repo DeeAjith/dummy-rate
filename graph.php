@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $propertyCreation['content_ai']['multiple'] = $propertyCreation['content_ai']['single'] * 60;
 
     $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
-    $propertyCreation['minutes']['single'] = round($propertyCreation['hours_saved']['single']) * 60;
+    $propertyCreation['days']['single'] = round($propertyCreation['hours_saved']['single']) / 24;
     $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
     $propertyCreation['percentage'] = round((1 - round($propertyCreation['content_ai']['single']) / round($propertyCreation['manual_effort']['single'])) * 100);
 
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $propertyUpdate['content_ai']['multiple'] = $propertyUpdate['content_ai']['single'] * 60;
 
     $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
-    $propertyUpdate['minutes']['single'] = round($propertyUpdate['hours_saved']['single']) * 60;
+    $propertyUpdate['days']['single'] = round($propertyUpdate['hours_saved']['single']) / 24;
     $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
     $propertyUpdate['percentage'] = round((1 - round($propertyUpdate['content_ai']['single']) / round($propertyUpdate['manual_effort']['single'])) * 100);
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     $efficiencyScalability['content_ai'] = (((($churn + $_POST['properties']) * 2.5 * $_POST['ota']) + (($churn + $_POST['properties']) * 4 * 0.75 * $_POST['ota']))) / (0.05 * $_POST['ota'] + $_POST['ota']);
     $efficiencyScalability['team_effort'] = round((1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update']) * 100);
     $efficiencyScalability['hours_saved'] = round($efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai']);
-    $efficiencyScalability['minutes'] = $efficiencyScalability['hours_saved'] * 60;
+    $efficiencyScalability['days'] = $efficiencyScalability['hours_saved'] / 24;
 
     // print_r(json_encode($efficiencyScalability));
 
@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                         <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= $propertyCreation['minutes']['single'] ?> minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= $propertyCreation['days']['single'] ?> Days</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__content">
@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                         <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= $efficiencyScalability['minutes'] ?> minutes</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= $efficiencyScalability['days'] ?> Days</span> with in creating a new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__info">
