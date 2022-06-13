@@ -9,7 +9,6 @@ if (isset($_POST['submit'])) {
   E6 = $_POST['ota'];
   */
     // print_r(json_encode($_POST));
-    number_format((float)$number, 2, '.', '');
     $propertyCreation = [];
     $propertyUpdate = [];
     $efficiencyScalability = [];
