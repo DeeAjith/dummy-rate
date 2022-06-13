@@ -53,11 +53,11 @@ if (isset($_POST['submit'])) {
 
     // $messages['active'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? true : false;
     $messages['active'] = true;
-    $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates." : "Content AI's Reporting Tool";
+    $messages['heading'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ? "Your team does not have enough bandwidth for regular updates." : "";
     $messages['content'] = $efficiencyScalability['hours_available'] < $efficiencyScalability['manual_update'] ?
         "Ideally there is a requirement of <span class='__text-highlight'>" . round($efficiencyScalability['manual_update'] / 160) .
         " team member(s)</span>, but can be managed by <span class='__text-highlight'>" . round($efficiencyScalability['content_ai'] / 160) .
-        " member(s)</span> using Content AI." : "Personalized Hotel Content Score Report";
+        " member(s)</span> using Content AI." : "";
 
     // print_r(json_encode($messages));
     // mail("rahiovaiz@gmail.com", "Success", "Send mail from localhost using PHP");
@@ -103,10 +103,11 @@ if (isset($_POST['submit'])) {
                 <div class="rateGain-out">
                     <div class="__content">
                         <div class="__header">
+                            <h2 class="text-xl">Content AI's Reporting Tool</h2>
+                            <p class="text-dark">Personalized Hotel Content Score Report</p>
                             <?php if ($messages['active']) : ?>
                                 <h1><?= $messages['heading'] ?></h1>
                                 <span><?= $messages['content'] ?></span>
-
                             <?php endif; ?>
                         </div>
                         <div class="row p-0 m-0 __graphVis">
@@ -178,8 +179,8 @@ if (isset($_POST['submit'])) {
                 labels: ['Manual Effort', 'Content A.I'],
                 datasets: [{
                     fill: false,
-                    backgroundColor: ['#00A4A7',
-                        '#F19A00',
+                    backgroundColor: ['#F19A00',
+                        '#00A4A7',
                     ],
                     data: [<?= round($propertyCreation['manual_effort']['single']) ?>,
                         <?= round($propertyCreation['content_ai']['single']) ?>
@@ -202,8 +203,8 @@ if (isset($_POST['submit'])) {
                 labels: ['Manual Update', 'Content A.I'],
                 datasets: [{
                     fill: false,
-                    backgroundColor: ['#00A4A7',
-                        '#F19A00',
+                    backgroundColor: ['#F19A00',
+                        '#00A4A7',
                     ],
                     data: [<?= round($efficiencyScalability['manual_update']) ?>,
                         <?= round($efficiencyScalability['content_ai']) ?>
