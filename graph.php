@@ -361,19 +361,20 @@ if (isset($_POST['submit'])) {
                 $('#' + canvasId).remove(); // this is my <canvas> element
                 $(this).parent().append('<canvas id="' + canvasId + '" class="graphs" width="450" height="350"><canvas>');
                 var contentElement = document.getElementById(canvasId).getContext('2d');
-                var manual = $(this).siblings('.manual').val();
-                var content = $(this).siblings('.content').val();
+                var manual = parseFloat($(this).siblings('.manual').val());
+                var content = parseFloat($(this).siblings('.content').val());
                 if ($(this).attr('timeat') == 'hours') {
-                    manual = manual / 24;
-                    content = content / 24;
+                    manual = parseFloat(manual / 24).toFixed(2);
+                    content = parseFloat(content / 24).toFixed(2);
                     $(this).attr('timeat', 'days');
                     $(this).children('span').text('Days');
                 } else {
-                    manual = manual;
-                    content = content;
+                    manual = parseInt(manual);
+                    content = parseInt(content);
                     $(this).attr('timeat', 'hours');
                     $(this).children('span').text('Hours');
                 }
+                console.log(typeof(manual));
                 var data = {
                     labels: ['Manual Effort', 'Content A.I'],
                     datasets: [{
@@ -381,7 +382,7 @@ if (isset($_POST['submit'])) {
                         backgroundColor: ['#00A4A7',
                             '#F19A00',
                         ],
-                        data: [manual.toFixed(2), content.toFixed(2)],
+                        data: [manual, content],
                     }]
                 };
                 makeGraph(contentElement, data, myoption, canvasId);
