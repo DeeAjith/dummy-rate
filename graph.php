@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
   E6 = $_POST['ota'];
   */
     // print_r(json_encode($_POST));
+    number_format((float)$number, 2, '.', '');
     $propertyCreation = [];
     $propertyUpdate = [];
     $efficiencyScalability = [];
@@ -20,7 +21,7 @@ if (isset($_POST['submit'])) {
     $propertyCreation['content_ai']['multiple'] = $propertyCreation['content_ai']['single'] * 60;
 
     $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
-    $propertyCreation['days']['single'] = round($propertyCreation['hours_saved']['single']) / 24;
+    $propertyCreation['days']['single'] = number_format((float)$propertyCreation['hours_saved']['single'] / 24, 2, '.', '');
     $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
     $propertyCreation['percentage'] = round((1 - round($propertyCreation['content_ai']['single']) / round($propertyCreation['manual_effort']['single'])) * 100);
 
@@ -34,7 +35,7 @@ if (isset($_POST['submit'])) {
     $propertyUpdate['content_ai']['multiple'] = $propertyUpdate['content_ai']['single'] * 60;
 
     $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
-    $propertyUpdate['days']['single'] = round($propertyUpdate['hours_saved']['single']) / 24;
+    $propertyUpdate['days']['single'] = number_format((float)$propertyUpdate['hours_saved']['single'] / 24, 2, '.', '');
     $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
     $propertyUpdate['percentage'] = round((1 - round($propertyUpdate['content_ai']['single']) / round($propertyUpdate['manual_effort']['single'])) * 100);
 
@@ -46,7 +47,7 @@ if (isset($_POST['submit'])) {
     $efficiencyScalability['content_ai'] = (((($churn + $_POST['properties']) * 2.5 * $_POST['ota']) + (($churn + $_POST['properties']) * 4 * 0.75 * $_POST['ota']))) / (0.05 * $_POST['ota'] + $_POST['ota']);
     $efficiencyScalability['team_effort'] = round((1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update']) * 100);
     $efficiencyScalability['hours_saved'] = round($efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai']);
-    $efficiencyScalability['days'] = $efficiencyScalability['hours_saved'] / 24;
+    $efficiencyScalability['days'] = number_format((float)$efficiencyScalability['hours_saved'] / 24, 2, '.', '');
 
     // print_r(json_encode($efficiencyScalability));
 
@@ -380,7 +381,7 @@ if (isset($_POST['submit'])) {
                         backgroundColor: ['#00A4A7',
                             '#F19A00',
                         ],
-                        data: [manual, content],
+                        data: [manual.toFixed(2), content.toFixed(2)],
                     }]
                 };
                 makeGraph(contentElement, data, myoption, canvasId);
