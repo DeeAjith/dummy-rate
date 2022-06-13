@@ -363,10 +363,10 @@ if (isset($_POST['submit'])) {
                 var manual = $(this).siblings('.manual').val();
                 var content = $(this).siblings('.content').val();
                 if ($(this).attr('timeat') == 'hours') {
-                    manual = manual * 60;
-                    content = content * 60;
-                    $(this).attr('timeat', 'minutes');
-                    $(this).children('span').text('Minutes');
+                    manual = manual / 24;
+                    content = content / 24;
+                    $(this).attr('timeat', 'days');
+                    $(this).children('span').text('Days');
                 } else {
                     manual = manual;
                     content = content;
