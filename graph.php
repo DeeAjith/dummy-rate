@@ -286,6 +286,7 @@ if (isset($_POST['submit'])) {
                 options: myoption
             });
         </script>
+        
     <?php endif; ?>
     <script>
         $(document).ready(function() {
