@@ -112,40 +112,50 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
-                                <p>Time taken to create a new property</p>
-                                <button class="__toggle-HM" timeat="hours">
-                                    <span>Hours</span>
-                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
-                                    </svg>
-                                </button>
-                                <input type="hidden" class="manual" value="<?= round($propertyCreation['manual_effort']['single']) ?>">
-                                <input type="hidden" class="content" value="<?= round($propertyCreation['content_ai']['single']) ?>">
-                                <canvas id="contentAi-graphs-1" class="graphs" width="450" height="350"></canvas>
-                            </div>
-                            <div class="__header __footer">
-                                <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= round($propertyCreation['days']['single']) ?> Working days</span> to create a new property with an AI-powered content optimization solution. </span>
+                                <div>
+                                    <p>Time taken to create a new property</p>
+                                    <button class="__toggle-HM" timeat="hours">
+                                        <span>Hours</span>
+                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
+                                        </svg>
+                                    </button>
+                                    <input type="hidden" class="manual" value="<?= round($propertyCreation['manual_effort']['single']) ?>">
+                                    <input type="hidden" class="content" value="<?= round($propertyCreation['content_ai']['single']) ?>">
+                                    <canvas id="contentAi-graphs-1" class="graphs" width="450" height="350"></canvas>
+                                </div>
+                                <div class="__header __footer">
+                                    <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" data-bs-content="92% of travelers are more likely to book accommodations with detailed property descriptions and photos. It is essential to be detailed with your Content, so include clear images and descriptions of your property’s amenities and features.">
+                                        <img src="assets/images/svg/icons/info-icon.svg">
+                                    </span>
+                                    <span>Improve your efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= round($propertyCreation['days']['single']) ?> Working days</span> to create a new property with an AI-powered content optimization solution. </span>
+                                </div>
                             </div>
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
-                                <p>Time taken for regular property updates</p>
-                                <button class="__toggle-HM" timeat="hours">
-                                    <span>Hours</span>
-                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
-                                    </svg>
-                                </button>
-                                <input type="hidden" class="manual" value="<?= round($propertyUpdate['manual_effort']['single']) ?>">
-                                <input type="hidden" class="content" value="<?= round($propertyUpdate['content_ai']['single']) ?>">
-                                <canvas id="contentAi-graphs-2" class="graphs" width="450" height="350"></canvas>
-                            </div>
-                            <div class="__header __footer">
-                                <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $propertyUpdate['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyUpdate['hours_saved']['single'] ?> hrs or <?= round($propertyUpdate['days']['single']) ?> Working days</span> in creating in creating new property with AI-powered content optimization solution. </span>
+                                <div>
+                                    <p>Time taken for regular property updates</p>
+                                    <button class="__toggle-HM" timeat="hours">
+                                        <span>Hours</span>
+                                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
+                                        </svg>
+                                    </button>
+                                    <input type="hidden" class="manual" value="<?= round($propertyUpdate['manual_effort']['single']) ?>">
+                                    <input type="hidden" class="content" value="<?= round($propertyUpdate['content_ai']['single']) ?>">
+                                    <canvas id="contentAi-graphs-2" class="graphs" width="450" height="350"></canvas>
+                                </div>
+                                <div class="__header __footer">
+                                    <span class="popover-toggle" type="button" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" data-bs-content="Leading OTA has made 12 major content updates since 2019. Covering 100+ content attributes from health and safety to sustainability to policies. It is recommended to audit your property, including traveler photos, to identify the gaps and missing fields.">
+                                        <img src="assets/images/svg/icons/info-icon.svg">
+                                    </span>
+                                    <span>Improve your efficiency by <span class='__text-highlight'><?= $propertyUpdate['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyUpdate['hours_saved']['single'] ?> hrs or <?= round($propertyUpdate['days']['single']) ?> Working days</span> in creating in creating new property with AI-powered content optimization solution. </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="__content">
                         <div class="row p-0 m-0 __graphVis">
-                            <div class="col-12 p-0 chart-container" style="position: relative; width:75%; height: 250px;">
+                            <div class="col-12 p-0 chart-container" style="position: relative;width: 75% ;height: 350px ;">
                                 <p>Efficiency & Scalability of Content updates</p>
                                 <button class="__toggle-HM" timeat="hours">
                                     <span>Hours</span>
@@ -155,11 +165,12 @@ if (isset($_POST['submit'])) {
                                 </button>
                                 <input type="hidden" class="manual" value="<?= round($efficiencyScalability['manual_update']['single']) ?>">
                                 <input type="hidden" class="content" value="<?= round($efficiencyScalability['content_ai']['single']) ?>">
-                                <canvas style="width:100%; height: 250px;" class="graphs" id="contentAi-graphs-3"></canvas>
+                                <canvas style="width: 75% ;height: 250px;" class="graphs" id="contentAi-graphs-3"></canvas>
                             </div>
                         </div>
-                        <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. save up to <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= round($efficiencyScalability['days']) ?> Working days</span> in creating in creating new property with AI powered content optimization solution. </span>
+                        <div class="__header __footer" style="width: 70%">
+                            <img src="assets/images/svg/icons/info-icon.svg">
+                            <span>Improve your efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. save up to <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= round($efficiencyScalability['days']) ?> Working days</span> in creating in creating new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__info">
@@ -310,7 +321,7 @@ if (isset($_POST['submit'])) {
                     display: false
                 },
                 tooltips: {
-                    enabled: true
+                    enabled: false
                 },
                 hover: {
                     animationDuration: 2
@@ -390,8 +401,8 @@ if (isset($_POST['submit'])) {
                     labels: ['Manual Effort', 'Content A.I'],
                     datasets: [{
                         fill: false,
-                        backgroundColor: ['#00A4A7',
-                            '#F19A00',
+                        backgroundColor: ['#F19A00',
+                            '#00A4A7',
                         ],
                         data: [manual, content],
                     }]
