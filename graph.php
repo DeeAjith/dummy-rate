@@ -103,8 +103,8 @@ if (isset($_POST['submit'])) {
                 <div class="rateGain-out">
                     <div class="__content">
                         <div class="__header">
-                            <h2 class="text-xl">Content AI's Reporting Tool</h2>
-                            <p class="text-dark">Personalized Hotel Content Score Report</p>
+                            <h2 class="text-xl">Content AI Reporting Tool</h2>
+                            <p class="text-dark">Ready to optimize your Content Management & Distribution process</p>
                             <?php if ($messages['active']) : ?>
                                 <h1><?= $messages['heading'] ?></h1>
                                 <span><?= $messages['content'] ?></span>
