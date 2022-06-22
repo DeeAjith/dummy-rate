@@ -376,7 +376,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="field">
                       <input id="howdy" type="text" class="w-100 input-text form-input">
-                      <label for="howdy">How did you hear about us? <span style="color:red">*</span></label>
+                      <label for="howdy">How did you hear about us?</label>
                     </div>
                     <div class="__actions">
                       <a tabindex="1" href="javascript:void(0)" class="__previous">Back</a>

@@ -829,6 +829,15 @@ body::-webkit-scrollbar-thumb {
   gap: 10px;
 }
 
+.rate-gain.__page-wrapper .__output .rateGain-out .__content .__graphVis button.__toggle-HM::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-image: radial-gradient(white 0, white 50%, black 10%);
+}
+
 .rate-gain.__page-wrapper .__output .rateGain-out .__content .__footer {
   display: -webkit-box;
   display: -ms-flexbox;
