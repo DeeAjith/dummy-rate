@@ -356,27 +356,27 @@ if (isset($_POST['submit'])) {
                   <fieldset class="detailsForm w-100">
                     <div class="field">
                       <input required id="fname" type="text" class="w-100 input-text form-input">
-                      <label for="fname">First Name</label>
+                      <label for="fname">First Name <span style="color:red">*</span></label>
                     </div>
                     <div class="field">
                       <input required id="lname" type="text" class="w-100 input-text form-input">
-                      <label for="lname">Last Name</label>
+                      <label for="lname">Last Name <span style="color:red">*</span></label>
                     </div>
                     <div class="field">
                       <input required id="jobtitle" type="text" class="w-100 input-text form-input">
-                      <label for="jobtitle">Job Title</label>
+                      <label for="jobtitle">Job Title <span style="color:red">*</span></label>
                     </div>
                     <div class="field">
                       <input required id="email" type="email" class="w-100 input-text form-input">
-                      <label for="email">Email</label>
+                      <label for="email">Email <span style="color:red">*</span></label>
                     </div>
                     <div class="field">
                       <input required id="hotel" type="text" class="w-100 input-text form-input">
-                      <label for="hotel">Hotel Name</label>
+                      <label for="hotel">Hotel Name <span style="color:red">*</span></label>
                     </div>
                     <div class="field">
-                      <input required id="howdy" type="text" class="w-100 input-text form-input">
-                      <label for="howdy">How did you hear about us?</label>
+                      <input id="howdy" type="text" class="w-100 input-text form-input">
+                      <label for="howdy">How did you hear about us? <span style="color:red">*</span></label>
                     </div>
                     <div class="__actions">
                       <a tabindex="1" href="javascript:void(0)" class="__previous">Back</a>

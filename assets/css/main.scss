@@ -822,6 +822,15 @@ body {
                         display: flex;
                         align-items: center;
                         gap: 10px;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background-image: radial-gradient(white 0, white 50%, black 10%);
+                        }
                     }
                 }
 
