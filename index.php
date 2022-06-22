@@ -93,9 +93,8 @@ if (isset($_POST['submit'])) {
       <div class="row home-hero slides">
         <div class="col-sm-12 col-1336-5 col-lg-6 __heroContent">
           <div class="__content">
-            <h1>Content AI's Personalized Hotel Content Score Report.</h1>
-            <p>Based on your unique inputs, Content AI could help your team achieve the desired revenue results.</p>
-            <span class="__take">Take This Assignment</a>
+            <h1>Calculate the efficiency of your content process with a quick 2 min survey.</h1>
+            <p>Content Al reporting tool can help identify efficiency improvement based on your unique inputs.  </p>
           </div>
         </div>
         <!-- slideItems -->
@@ -198,15 +197,19 @@ if (isset($_POST['submit'])) {
                       <fieldset class="radio-qset">
                         <input type="checkbox" name="cm-action3[]" value="Manual" id="cm-manual">
                         <label class="w-50" for="cm-manual">
-                          <p>Manual</p>
+                          <p>Manual files upload</p>
                         </label>
                         <input type="checkbox" name="cm-action3[]" value="Bulk" id="cm-bulk">
                         <label class="w-50" for="cm-bulk">
-                          <p>Bulk</p>
+                          <p>Bulk Distribution</p>
                         </label>
                         <input type="checkbox" name="cm-action3[]" value="In-house custom solution" id="cm-inhouseSolution3">
                         <label class="w-50" for="cm-inhouseSolution3">
                           <p>In-house custom solution</p>
+                        </label>
+                        <input type="checkbox" name="cm-action4[]" value="third party solution" id="cm-thirdpartySolution3">
+                        <label class="w-50" for="cm-thirdpartySolution3">
+                          <p>3<sup>rd</sup> Party solution</p>
                         </label>
                       </fieldset>
                     </li>
