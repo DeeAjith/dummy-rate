@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
         <div class="col-sm-12 col-1336-5 col-lg-6 __heroContent">
           <div class="__content">
             <h1>Calculate the efficiency of your content process with a quick 2 min survey.</h1>
-            <p>Content Al reporting tool can help identify efficiency improvement based on your unique inputs.  </p>
+            <p>Content Al reporting tool can help identify efficiency improvement based on your unique inputs. </p>
           </div>
         </div>
         <!-- slideItems -->
@@ -333,7 +333,7 @@ if (isset($_POST['submit'])) {
                         </label>
                       </fieldset>
                     </li>
-                    <li class="q-9">
+                    <li class="q-9" style="display: none;">
                       <p>What would be your average content score across properties and demand partners (out of 10)?</p>
                       <div class="range-wrap">
                         <span>0</span>
@@ -428,6 +428,13 @@ if (isset($_POST['submit'])) {
       observer.observe($('.range.average .ui-state-default')[0], {
         attributes: true,
         attributeFilter: ['class'],
+      });
+      $('input[type=radio][name=cm-action7]').change(function() {
+        if (this.value == 'Yes') {
+          $('.q-9').show();
+        } else if (this.value == 'No') {
+          $('.q-9').hide();
+        }
       });
     });
   </script>

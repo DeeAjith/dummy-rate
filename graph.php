@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $propertyCreation['content_ai']['multiple'] = $propertyCreation['content_ai']['single'] * 60;
 
     $propertyCreation['hours_saved']['single'] = round($propertyCreation['manual_effort']['single']) - round($propertyCreation['content_ai']['single']);
-    $propertyCreation['days']['single'] = number_format((float)$propertyCreation['hours_saved']['single'] / 24, 2, '.', '');
+    $propertyCreation['days']['single'] = number_format((float)$propertyCreation['hours_saved']['single'] / 8, 2, '.', '');
     $propertyCreation['hours_saved']['multiple'] = round($propertyCreation['manual_effort']['multiple']) - round($propertyCreation['content_ai']['multiple']);
     $propertyCreation['percentage'] = round((1 - round($propertyCreation['content_ai']['single']) / round($propertyCreation['manual_effort']['single'])) * 100);
 
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $propertyUpdate['content_ai']['multiple'] = $propertyUpdate['content_ai']['single'] * 60;
 
     $propertyUpdate['hours_saved']['single'] = round($propertyUpdate['manual_effort']['single']) - round($propertyUpdate['content_ai']['single']);
-    $propertyUpdate['days']['single'] = number_format((float)$propertyUpdate['hours_saved']['single'] / 24, 2, '.', '');
+    $propertyUpdate['days']['single'] = number_format((float)$propertyUpdate['hours_saved']['single'] / 8, 2, '.', '');
     $propertyUpdate['hours_saved']['multiple'] = round($propertyUpdate['manual_effort']['multiple']) - round($propertyUpdate['content_ai']['multiple']);
     $propertyUpdate['percentage'] = round((1 - round($propertyUpdate['content_ai']['single']) / round($propertyUpdate['manual_effort']['single'])) * 100);
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     $efficiencyScalability['content_ai'] = (((($churn + $_POST['properties']) * 2.5 * $_POST['ota']) + (($churn + $_POST['properties']) * 4 * 0.75 * $_POST['ota']))) / (0.05 * $_POST['ota'] + $_POST['ota']);
     $efficiencyScalability['team_effort'] = round((1 - $efficiencyScalability['content_ai'] / $efficiencyScalability['manual_update']) * 100);
     $efficiencyScalability['hours_saved'] = round($efficiencyScalability['manual_update'] - $efficiencyScalability['content_ai']);
-    $efficiencyScalability['days'] = number_format((float)$efficiencyScalability['hours_saved'] / 24, 2, '.', '');
+    $efficiencyScalability['days'] = number_format((float)$efficiencyScalability['hours_saved'] / 8, 2, '.', '');
 
     // print_r(json_encode($efficiencyScalability));
 
@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
-                                <p>Effort saving in property creation</p>
+                                <p>Time taken to create a new property</p>
                                 <button class="__toggle-HM" timeat="hours">
                                     <span>Hours</span>
                                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,8 +123,11 @@ if (isset($_POST['submit'])) {
                                 <input type="hidden" class="content" value="<?= round($propertyCreation['content_ai']['single']) ?>">
                                 <canvas id="contentAi-graphs-1" class="graphs" width="450" height="350"></canvas>
                             </div>
+                            <div class="__header __footer">
+                                <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= round($propertyCreation['days']['single']) ?> Working days</span> to create a new property with an AI-powered content optimization solution. </span>
+                            </div>
                             <div class="col-6 p-0 chart-container" style="position: relative; width: 400px">
-                                <p>Effort saving in regular property update</p>
+                                <p>Time taken for regular property updates</p>
                                 <button class="__toggle-HM" timeat="hours">
                                     <span>Hours</span>
                                     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,20 +138,28 @@ if (isset($_POST['submit'])) {
                                 <input type="hidden" class="content" value="<?= round($propertyUpdate['content_ai']['single']) ?>">
                                 <canvas id="contentAi-graphs-2" class="graphs" width="450" height="350"></canvas>
                             </div>
-                        </div>
-                        <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $propertyCreation['percentage'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $propertyCreation['hours_saved']['single'] ?> hrs or <?= $propertyCreation['days']['single'] ?> Days</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <div class="__header __footer">
+                                <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $propertyUpdate['percentage'] ?>% </span>. save up to <span class='__text-highlight'> <?= $propertyUpdate['hours_saved']['single'] ?> hrs or <?= round($propertyUpdate['days']['single']) ?> Working days</span> in creating in creating new property with AI-powered content optimization solution. </span>
+                            </div>
                         </div>
                     </div>
                     <div class="__content">
                         <div class="row p-0 m-0 __graphVis">
                             <div class="col-12 p-0 chart-container" style="position: relative; width:75%; height: 250px;">
-                                <p>Efficiency & Scalability of Content updates via Content AI</p>
+                                <p>Efficiency & Scalability of Content updates</p>
+                                <button class="__toggle-HM" timeat="hours">
+                                    <span>Hours</span>
+                                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
+                                    </svg>
+                                </button>
+                                <input type="hidden" class="manual" value="<?= round($efficiencyScalability['manual_update']['single']) ?>">
+                                <input type="hidden" class="content" value="<?= round($efficiencyScalability['content_ai']['single']) ?>">
                                 <canvas style="width:100%; height: 250px;" class="graphs" id="contentAi-graphs-3"></canvas>
                             </div>
                         </div>
                         <div class="__header __footer">
-                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your property creation efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. Save almost upto <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= $efficiencyScalability['days'] ?> Days</span> with in creating a new property with AI powered content optimization solution. </span>
+                            <img src="assets/images/svg/icons/info-icon.svg"><span>Improve your efficiency by <span class='__text-highlight'><?= $efficiencyScalability['team_effort'] ?>% </span>. save up to <span class='__text-highlight'> <?= $efficiencyScalability['hours_saved'] ?> hrs or <?= round($efficiencyScalability['days']) ?> Working days</span> in creating in creating new property with AI powered content optimization solution. </span>
                         </div>
                     </div>
                     <div class="__info">
@@ -286,7 +297,7 @@ if (isset($_POST['submit'])) {
                 options: myoption
             });
         </script>
-        
+
     <?php endif; ?>
     <script>
         $(document).ready(function() {
@@ -364,8 +375,8 @@ if (isset($_POST['submit'])) {
                 var manual = parseFloat($(this).siblings('.manual').val());
                 var content = parseFloat($(this).siblings('.content').val());
                 if ($(this).attr('timeat') == 'hours') {
-                    manual = parseFloat(manual / 24).toFixed(2);
-                    content = parseFloat(content / 24).toFixed(2);
+                    manual = parseFloat(manual / 8).toFixed(2);
+                    content = parseFloat(content / 8).toFixed(2);
                     $(this).attr('timeat', 'days');
                     $(this).children('span').text('Days');
                 } else {
