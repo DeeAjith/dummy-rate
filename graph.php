@@ -163,8 +163,8 @@ if (isset($_POST['submit'])) {
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.936553 0.599895C1.20779 0.344154 1.63499 0.356719 1.89073 0.627959L4.99961 3.92525L8.10849 0.627959C8.36423 0.356719 8.79143 0.344154 9.06267 0.599895C9.33391 0.855635 9.34647 1.28284 9.09073 1.55408L5.49073 5.37226C5.3632 5.50752 5.18552 5.5842 4.99961 5.5842C4.8137 5.5842 4.63602 5.50752 4.50849 5.37226L0.908488 1.55408C0.652748 1.28284 0.665313 0.855635 0.936553 0.599895Z" fill="black" />
                                     </svg>
                                 </button>
-                                <input type="hidden" class="manual" value="<?= round($efficiencyScalability['manual_update']['single']) ?>">
-                                <input type="hidden" class="content" value="<?= round($efficiencyScalability['content_ai']['single']) ?>">
+                                <input type="hidden" class="manual" value="<?= round($efficiencyScalability['manual_update']) ?>">
+                                <input type="hidden" class="content" value="<?= round($efficiencyScalability['content_ai']) ?>">
                                 <canvas style="width: 75% ;height: 250px;" class="graphs" id="contentAi-graphs-3"></canvas>
                             </div>
                         </div>
@@ -193,10 +193,9 @@ if (isset($_POST['submit'])) {
     <script src="assets/js/ranger.js"></script>
     <script src="assets/js/index.js"></script>
 
-    <?php if (isset($_POST['submit'])) : ?>
+    <script>
+        $(document).ready(function() {
 
-
-        <script>
             var myData = {
                 labels: ['Manual Effort', 'Content A.I'],
                 datasets: [{
@@ -233,86 +232,6 @@ if (isset($_POST['submit'])) {
                     ],
                 }]
             };
-            var myoption = {
-                legend: {
-                    display: false
-                },
-                hover: {
-                    animationDuration: 1,
-                },
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            color: "rgba(0, 0, 0, 0.05)",
-                        },
-                        barPercentage: .6,
-                        categoryPercentage: .7,
-                        ticks: {
-                            autoSkip: true,
-                            maxRotation: 0,
-                            minRotation: 0,
-                            fontSize: 12,
-                            fontColor: "Black",
-                            beginAtZero: true,
-                            defaultFontFamily: "Inter, Helvetica, sans-serif"
-                        }
-                    }],
-                    yAxes: [{
-                        gridLines: {
-                            color: "rgba(0, 0, 0, 0.05)",
-                        },
-                        ticks: {
-                            beginAtZero: true,
-                            fontSize: 12,
-                            fontColor: "Black",
-                            defaultFontFamily: "Inter, Helvetica, sans-serif",
-                        }
-
-                    }]
-                },
-                animation: {
-                    easing: 'easeInSine',
-                    duration: 1000,
-                    onComplete: function() {
-                        var chartInstance = this.chart,
-                            ctx = chartInstance.ctx;
-                        ctx.textAlign = 'center';
-                        ctx.fillStyle = "rgba(0, 0, 0, .5)";
-                        ctx.textBaseline = 'bottom';
-                        this.data.datasets.forEach(function(dataset, i) {
-                            var meta = chartInstance.controller.getDatasetMeta(i);
-                            meta.data.forEach(function(bar, index) {
-                                var data = dataset.data[index];
-                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                            });
-                        });
-                    }
-                }
-            };
-            var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
-            var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
-            var ctx3 = document.getElementById('contentAi-graphs-3').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: myData,
-                options: myoption
-            });
-            var myChart2 = new Chart(ctx2, {
-                type: 'bar',
-                data: myData2,
-                options: myoption
-            });
-            var myChart3 = new Chart(ctx3, {
-                type: 'bar',
-                data: myData3,
-                options: myoption
-            });
-        </script>
-
-    <?php endif; ?>
-    <script>
-        $(document).ready(function() {
-
             var myoption = {
                 title: {
                     display: true
@@ -378,16 +297,36 @@ if (isset($_POST['submit'])) {
                     }
                 }
             };
+
+            var ctx = document.getElementById('contentAi-graphs-1').getContext('2d');
+            var ctx2 = document.getElementById('contentAi-graphs-2').getContext('2d');
+            var ctx3 = document.getElementById('contentAi-graphs-3').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: myData,
+                options: myoption
+            });
+            var myChart2 = new Chart(ctx2, {
+                type: 'bar',
+                data: myData2,
+                options: myoption
+            });
+            var myChart3 = new Chart(ctx3, {
+                type: 'bar',
+                data: myData3,
+                options: myoption
+            });
             $('.__toggle-HM').click(function() {
                 var canvasId = $(this).parent().children('canvas.graphs').attr('id');
+                var canvasStyle = $('#' + canvasId).attr('style');
                 $('#' + canvasId).remove(); // this is my <canvas> element
-                $(this).parent().append('<canvas id="' + canvasId + '" class="graphs" width="450" height="350"><canvas>');
+                $(this).parent().append('<canvas id="' + canvasId + '" class="graphs" style="' + canvasStyle + '" ><canvas>');
                 var contentElement = document.getElementById(canvasId).getContext('2d');
-                var manual = parseFloat($(this).siblings('.manual').val());
-                var content = parseFloat($(this).siblings('.content').val());
+                var manual = parseInt($(this).siblings('.manual').val());
+                var content = parseInt($(this).siblings('.content').val());
                 if ($(this).attr('timeat') == 'hours') {
-                    manual = parseFloat(manual / 8).toFixed(2);
-                    content = parseFloat(content / 8).toFixed(2);
+                    manual = parseInt(manual / 8);
+                    content = parseInt(content / 8);
                     $(this).attr('timeat', 'days');
                     $(this).children('span').text('Days');
                 } else {
@@ -408,6 +347,7 @@ if (isset($_POST['submit'])) {
                     }]
                 };
                 makeGraph(contentElement, data, myoption, canvasId);
+                $('.chartjs-hidden-iframe').remove();
             });
 
             function makeGraph(graphElement, myData3, myoption, canvasId) {
